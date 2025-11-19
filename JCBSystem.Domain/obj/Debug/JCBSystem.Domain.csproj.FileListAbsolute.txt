@@ -1,0 +1,6 @@
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Domain\bin\Debug\JCBSystem.Domain.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Domain\bin\Debug\JCBSystem.Domain.pdb
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Domain\obj\Debug\JCBSystem.Domain.csproj.AssemblyReference.cache
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Domain\obj\Debug\JCBSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Domain\obj\Debug\JCBSystem.Domain.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Domain\obj\Debug\JCBSystem.Domain.pdb

@@ -1,0 +1,57 @@
+﻿using JCBSystem.Core;
+using JCBSystem.Core.common;
+using JCBSystem.Core.common.CRUD;
+using JCBSystem.Core.common.FormCustomization;
+using JCBSystem.Core.common.Interfaces;
+using JCBSystem.Core.common.Logics;
+using JCBSystem.Infrastructure.Connection;
+using JCBSystem.Infrastructure.Connection.Interface;
+using JCBSystem.Users;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace JCBSystem.WinUi
+{
+    public static class DependencyInjection
+    {
+        public static ServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
+
+            // ✅ Connection factory selector (handles which DB type to use)
+            services.AddSingleton<IConnectionFactorySelector, ConnectionFactorySelector>();
+
+            // ✅ Register a single default factory using the selector
+            services.AddScoped<IDbConnectionFactory>(sp =>
+            {
+                // kunin ang selector from DI
+                var selector = sp.GetRequiredService<IConnectionFactorySelector>();
+
+                // gamitin ang async result synchronously (safe since startup)
+                var factoryTask = selector.GetFactory();
+                factoryTask.Wait();
+                return factoryTask.Result;
+            });
+
+            // ✅ Shared helpers
+            services.AddSingleton<FormFactory>();
+
+            // ✅ Logic layer services
+            services.AddScoped<IDataManager, DataManager>();
+            services.AddScoped<CheckIfRecordExists>();
+            services.AddScoped<GenerateNextValues>();
+            services.AddScoped<GetComboBoxAttributes>();
+            services.AddScoped<GetFieldsValues>();
+            services.AddScoped<LoadDataToTextBoxes>();
+            services.AddScoped<RegistryKeys>();
+            services.AddScoped<Pagination>();
+
+            // ✅ Forms
+            services.AddScoped<MainForm>();
+            services.AddScoped<loginForm>();
+            services.AddScoped<UserManagementForm>();
+            services.AddScoped<UsersListForm>();
+
+            return services.BuildServiceProvider();
+        }
+    }
+}
