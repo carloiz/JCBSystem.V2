@@ -3,6 +3,9 @@ using JCBSystem.Core.common.CRUD;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Services.Authentication.Login.Commands;
+using JCBSystem.Services.Users.UsersList.Commands;
+using JCBSystem.Services.Users.UsersList.Queries;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,82 +19,24 @@ namespace JCBSystem.Users
     {
      
         private readonly IDataManager dataManager;
-        private readonly Pagination pagination;
+        private readonly DeleteUserCommand deleteUserCommand;
+        private readonly GetAllUserQuery getAllUserQuery;
         private readonly FormFactory formFactory;
 
         private string userNumber;
 
         private Dictionary<string, object> rowValue;
 
-        public UsersListForm(IDataManager dataManager, Pagination pagination, FormFactory formFactory)
+        public UsersListForm(DeleteUserCommand deleteUserCommand, FormFactory formFactory, GetAllUserQuery getAllUserQuery)
         {
             InitializeComponent();
-            this.dataManager = dataManager;
-            this.pagination = pagination;
+            this.deleteUserCommand = deleteUserCommand;
             this.formFactory = formFactory;
-            get_all_data();
+            this.getAllUserQuery = getAllUserQuery;
+            this.getAllUserQuery.Initialize(dataGridView1, panel1);
+            _ = this.getAllUserQuery.HandlerAsync();
         }
 
-
-        public async void get_all_data(List<string> image = null)
-        {
-
-            string countQuery = $@"SELECT COUNT(*) FROM Users";
-
-            // Query to fetch paginated data
-            string dataQuery = $@"SELECT * FROM Users";
-
-
-            var customHeaders = new Dictionary<string, string>
-            {
-                { "UserNumber", "ID" },
-                { "Username", "Username" },
-                { "UserLevel", "Role" },
-                { "Status", "Status" },
-                { "IsSessionActive", "Session" },
-                { "RecordDate", "Record Date" }
-            };
-
-
-
-            var (result, totalRecords) = await
-                dataManager.SearchWithPaginatedAsync<UsersDto>
-                (new List<object> { }, countQuery, dataQuery, dataGridView1, image, customHeaders, pagination.pageNumber, pagination.pageSize);
-
-            pagination.totalPages = (int)Math.Ceiling((double)totalRecords / pagination.pageSize);
-
-
-
-            pagination.UpdatePagination(panel1, pagination.totalPages, pagination.pageNumber, UpdateRecords, true);
-
-
-            dataGridView1.ColumnHeadersVisible = (string.IsNullOrEmpty(result)) ? true : false;
-
-
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
-            {
-                if (column.Name == "UserNumber" || column.Name == "Username" || column.Name == "UserLevel" || column.Name == "Status" || column.Name == "IsSessionActive")
-                {
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells; // Adjust based on content
-                }
-                else if (column.Name == "ImageColumn2")
-                {
-                    column.Width = 40;
-                }
-                else
-                {
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // Keep other columns evenly distributed
-                }
-            }
-        }
-
-
-        private Task UpdateRecords(int pageNumber)
-        {
-            pagination.pageNumber = pageNumber;
-            get_all_data();
-            return Task.CompletedTask;
-        }
 
         private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
         {
@@ -154,28 +99,14 @@ namespace JCBSystem.Users
 
         private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
-            {
-                await ProcessDelete(connection, transaction); // Tawagin ang Process method na may transaction at connection
-            });
-        }
+            this.deleteUserCommand.Initialize(userNumber);
+            await deleteUserCommand.HandlerAsync();
 
-
-        private async Task ProcessDelete(IDbConnection connection, IDbTransaction transaction)
-        {
-
-            string whereCondition = "Usernumber = #";
-
-            await dataManager.DeleteAsync(new List<object> { userNumber }, "Users", connection, transaction, whereCondition);
-
-
-            transaction.Commit(); // Commit changes  
-
-            get_all_data();
+            getAllUserQuery.Initialize(dataGridView1, panel1);
+            await getAllUserQuery.HandlerAsync();
 
             // Display the message for successful shift start
             MessageBox.Show($"Successfully Delete {userNumber} Record.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
     }
 }

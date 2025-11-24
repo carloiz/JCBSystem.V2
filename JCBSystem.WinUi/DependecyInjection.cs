@@ -1,11 +1,15 @@
 ﻿using JCBSystem.Core;
-using JCBSystem.Core.common;
 using JCBSystem.Core.common.CRUD;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
 using JCBSystem.Infrastructure.Connection;
 using JCBSystem.Infrastructure.Connection.Interface;
+using JCBSystem.Services.Authentication.Login.Commands;
+using JCBSystem.Services.MainDashboard.Queries;
+using JCBSystem.Services.Users.UserManagement.Commands;
+using JCBSystem.Services.Users.UsersList.Commands;
+using JCBSystem.Services.Users.UsersList.Queries;
 using JCBSystem.Users;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -46,10 +50,22 @@ namespace JCBSystem.WinUi
             services.AddScoped<Pagination>();
 
             // ✅ Forms
+            services.AddSingleton<ISessionManager, SessionManager>();
             services.AddScoped<MainForm>();
-            services.AddScoped<loginForm>();
+            services.AddScoped<LoginForm>();
             services.AddScoped<UserManagementForm>();
             services.AddScoped<UsersListForm>();
+
+
+            // Services
+            services.AddScoped<ServiceLoginCommand>();
+            services.AddScoped<ServiceLogoutCommand>();
+            services.AddScoped<GetSessionQuery>();
+            services.AddScoped<DeleteUserCommand>();
+            services.AddScoped<GetAllUserQuery>();
+            services.AddScoped<PostNewUserCommand>();
+            services.AddScoped<PutNewUserCommand>();
+
 
             return services.BuildServiceProvider();
         }

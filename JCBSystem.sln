@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCBSystem.WinUi", "JCBSystem.WinUi\JCBSystem.WinUi.csproj", "{5A2FA398-0804-4B4B-AA71-0B186A722B46}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCBSystem.Core", "JCBSystem.Core\JCBSystem.Core.csproj", "{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCBSystem.Domain", "JCBSystem.Domain\JCBSystem.Domain.csproj", "{C6E60B99-56BE-4B8D-963C-9B99D0F6F8AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCBSystem.Services", "JCBSystem.Services\JCBSystem.Services.csproj", "{82889682-6044-40CB-BE38-788E54952438}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C6E60B99-56BE-4B8D-963C-9B99D0F6F8AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6E60B99-56BE-4B8D-963C-9B99D0F6F8AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6E60B99-56BE-4B8D-963C-9B99D0F6F8AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82889682-6044-40CB-BE38-788E54952438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82889682-6044-40CB-BE38-788E54952438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82889682-6044-40CB-BE38-788E54952438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82889682-6044-40CB-BE38-788E54952438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

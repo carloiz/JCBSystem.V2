@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{82889682-6044-40CB-BE38-788E54952438}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JCBSystem.Services</RootNamespace>
+    <AssemblyName>JCBSystem.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\Login\Commands\ServiceLoginCommand.cs" />
+    <Compile Include="Authentication\Login\Commands\ServiceLogoutCommand.cs" />
+    <Compile Include="MainDashboard\Queries\GetSessionQuery.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\UserManagement\Commands\PostNewUserCommand.cs" />
+    <Compile Include="Users\UserManagement\Commands\PutNewUserCommand.cs" />
+    <Compile Include="Users\UsersList\Commands\DeleteUserCommand.cs" />
+    <Compile Include="Users\UsersList\Queries\GetAllUserQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JCBSystem.Core\JCBSystem.Core.csproj">
+      <Project>{9d9cbbe0-6c29-4912-aca8-b8b8ed81ebfb}</Project>
+      <Name>JCBSystem.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JCBSystem.Domain\JCBSystem.Domain.csproj">
+      <Project>{c6e60b99-56be-4b8d-963c-9b99d0f6f8ad}</Project>
+      <Name>JCBSystem.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JCBSystem.Infrastructure\JCBSystem.Infrastructure.csproj">
+      <Project>{0d59c432-0300-4af7-9b87-eaefa1e4e1fa}</Project>
+      <Name>JCBSystem.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MainDashboard\Commands\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
