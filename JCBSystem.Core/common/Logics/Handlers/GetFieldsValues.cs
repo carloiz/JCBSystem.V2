@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Infrastructure.Connection.Interface;
 
-namespace JCBSystem.Core.common.Logics
+namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class GetFieldsValues
     {
-
         private readonly IConnectionFactorySelector connectionFactorySelector;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
@@ -21,7 +20,7 @@ namespace JCBSystem.Core.common.Logics
             this.connectionFactorySelector = connectionFactorySelector;
         }
 
-        public async Task<Dictionary<string, object>> ExecuteAsync(
+        public async Task<Dictionary<string, object>> HandleAsync(
            List<object> filter,
            string tableName,
            List<string> fieldNamesQuery,

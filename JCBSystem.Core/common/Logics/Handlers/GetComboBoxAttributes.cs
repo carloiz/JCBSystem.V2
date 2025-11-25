@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Infrastructure.Connection.Interface;
 
-namespace JCBSystem.Core.common.Logics
+namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class GetComboBoxAttributes
     {
@@ -18,7 +18,7 @@ namespace JCBSystem.Core.common.Logics
             this.connectionFactorySelector = connectionFactorySelector;
         }
 
-        public async Task ExecuteAsync(ComboBox comboBox, string query)
+        public async Task HandleAsync(ComboBox comboBox, string query)
         {
             comboBox.Items.Clear(); // Clear existing items
 

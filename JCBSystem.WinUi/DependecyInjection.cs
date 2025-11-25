@@ -42,11 +42,9 @@ namespace JCBSystem.WinUi
 
             // ✅ Logic layer services
             services.AddScoped<IDataManager, DataManager>();
-            services.AddScoped<CheckIfRecordExists>();
-            services.AddScoped<GenerateNextValues>();
-            services.AddScoped<GetComboBoxAttributes>();
-            services.AddScoped<GetFieldsValues>();
-            services.AddScoped<LoadDataToTextBoxes>();
+
+            services.AddScoped<ILogicsManager, LogicsManager>();
+
             services.AddScoped<RegistryKeys>();
             services.AddScoped<Pagination>();
 

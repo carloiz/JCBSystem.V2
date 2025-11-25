@@ -19,16 +19,16 @@ namespace JCBSystem.Services.MainDashboard.Queries
     public class GetSessionQueryHandler : ILoyTrHandler<GetSessionQuery>
     {
         private readonly IDataManager dataManager;
+        private readonly ILogicsManager logicsManager;
         private readonly ISessionManager sessionManager;
         private readonly RegistryKeys registryKeys;
-        private readonly CheckIfRecordExists checkIfRecordExists;
 
-        public GetSessionQueryHandler(IDataManager dataManager, ISessionManager sessionManager, RegistryKeys registryKeys, CheckIfRecordExists checkIfRecordExists)
+        public GetSessionQueryHandler(IDataManager dataManager, ILogicsManager logicsManager, ISessionManager sessionManager, RegistryKeys registryKeys)
         {
             this.dataManager = dataManager;
+            this.logicsManager = logicsManager;
             this.sessionManager = sessionManager;
             this.registryKeys = registryKeys;
-            this.checkIfRecordExists = checkIfRecordExists;
         }
 
         public async Task HandleAsync(GetSessionQuery getSessionQuery)
@@ -59,7 +59,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
 
             if (JwtTokenHelper.IsTokenExpired(token))
             {
-                bool isExist = await checkIfRecordExists.ExecuteAsync(
+                bool isExist = await logicsManager.CheckIfRecordExists(
                     new List<object> { usernumber },
                     "Users",
                     "UserNumber = # AND IsSessionActive = true"

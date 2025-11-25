@@ -20,15 +20,15 @@ namespace JCBSystem.Services.Authentication.Login.Commands
     {
         private readonly IDataManager dataManager;
         private readonly ISessionManager sessionManager;
+        private readonly ILogicsManager logicsManager;
         private readonly RegistryKeys registryKeys;
-        private readonly GetFieldsValues getFieldsValues;
 
-        public ServiceLogoutCommandHandler(IDataManager dataManager, ISessionManager sessionManager, RegistryKeys registryKeys, GetFieldsValues getFieldsValues)
+        public ServiceLogoutCommandHandler(IDataManager dataManager, ISessionManager sessionManager, ILogicsManager logicsManager, RegistryKeys registryKeys)
         {
             this.dataManager = dataManager;
             this.sessionManager = sessionManager;
+            this.logicsManager = logicsManager;
             this.registryKeys = registryKeys;
-            this.getFieldsValues = getFieldsValues;
         }
 
         public async Task HandleAsync(ServiceLogoutCommand request)
@@ -60,7 +60,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
 
 
             Dictionary<string, object> GetValues = await
-                getFieldsValues.ExecuteAsync(
+                logicsManager.GetFieldsValues(
                     new List<object> { usernumber }, // Parameters
                     "Users",
                     new List<string> { "UserNumber", "IsSessionActive", "CurrentToken" }, // this is for like SUM(Quantity) As TotalQuantity

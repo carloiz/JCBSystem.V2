@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Infrastructure.Connection.Interface;
 
-namespace JCBSystem.Core.common.Logics
+namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class LoadDataToTextBoxes
     {
@@ -26,7 +26,7 @@ namespace JCBSystem.Core.common.Logics
 
 
         public async Task
-           ExecuteAsync(
+           HandleAsync(
                string query,
                Dictionary<string, object> parameters,
                List<TextBox> textBoxes,

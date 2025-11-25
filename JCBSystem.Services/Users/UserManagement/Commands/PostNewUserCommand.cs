@@ -24,20 +24,18 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
     public class PostNewUserCommandHandler : ILoyTrHandler<PostNewUserCommand>
     {
         private readonly IDataManager dataManager;
-        private readonly CheckIfRecordExists checkIfRecordExists;
-        private readonly GenerateNextValues generateNextValues;
+        private readonly ILogicsManager logicsManager;
 
-        public PostNewUserCommandHandler(IDataManager dataManager, CheckIfRecordExists checkIfRecordExists, GenerateNextValues generateNextValues)
+        public PostNewUserCommandHandler(IDataManager dataManager, ILogicsManager logicsManager)
         {
             this.dataManager = dataManager;
-            this.checkIfRecordExists = checkIfRecordExists;
-            this.generateNextValues = generateNextValues;
+            this.logicsManager = logicsManager;
         }
 
-        public async Task HandleAsync(PostNewUserCommand request)
+        public async Task HandleAsync(PostNewUserCommand req)
         {
-            bool isExist = await checkIfRecordExists.ExecuteAsync(
-                new List<object> { request.Username },
+            bool isExist = await logicsManager.CheckIfRecordExists(
+                new List<object> { req.Username },
                 "Users",
                 "Username = #"
             );
@@ -55,25 +53,25 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
 
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {
-                await ProcessCreate(connection, transaction, request.Form, request.Username, request.UserPassword, request.UserLevel);
+                await ProcessCreate(connection, transaction, req);
             });
         }
 
 
-        private async Task ProcessCreate(IDbConnection connection, IDbTransaction transaction, Form form, string userName, string userPassword, string userLevel)
+        private async Task ProcessCreate(IDbConnection connection, IDbTransaction transaction, PostNewUserCommand req)
         {
-            string password = PasswordHelper.HashPassword(userPassword);
+            string password = PasswordHelper.HashPassword(req.UserPassword);
 
-            string userId = await generateNextValues.ByIdAsync("Users", "UserNumber", "U");
+            string userId = await logicsManager.GenerateNextValuesByIdAsync("Users", "UserNumber", "U");
 
             DateTime dateToday = SystemDate.GetPhilippineTime();
 
             var userCreateDto = new UsersDto
             {
                 UserNumber = userId,
-                Username = userName,
+                Username = req.Username,
                 Password = password,
-                UserLevel = userLevel,
+                UserLevel = req.UserLevel,
                 Status = true,
                 IsSessionActive = false,
                 CurrentToken = null,
@@ -87,7 +85,7 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
 
             MessageBox.Show("Successfully Add New Record.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            FormHelper.CloseFormWithFade(form, true);
+            FormHelper.CloseFormWithFade(req.Form, true);
 
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Infrastructure.Connection.Interface;
 
-namespace JCBSystem.Core.common.Logics
+namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class CheckIfRecordExists
     {
@@ -20,7 +20,7 @@ namespace JCBSystem.Core.common.Logics
             this.connectionFactorySelector = connectionFactorySelector;
         }
 
-        public async Task<bool> ExecuteAsync(List<object> filter, string tableName, string whereCondition)
+        public async Task<bool> HandleAsync(List<object> filter, string tableName, string whereCondition)
         {
             if (string.IsNullOrWhiteSpace(tableName) || string.IsNullOrWhiteSpace(whereCondition))
                 throw new ArgumentException("Table name and where condition must not be null or empty.");

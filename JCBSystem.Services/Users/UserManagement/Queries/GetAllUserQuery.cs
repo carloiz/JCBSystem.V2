@@ -29,7 +29,7 @@ namespace JCBSystem.Services.Users.UserManagement.Queries
         }
 
 
-        public async Task HandleAsync(GetAllUserQuery getAllUserQuery)
+        public async Task HandleAsync(GetAllUserQuery req)
         {
 
             string countQuery = $@"SELECT COUNT(*) FROM Users";
@@ -51,17 +51,17 @@ namespace JCBSystem.Services.Users.UserManagement.Queries
 
             var (result, totalRecords) = await
                 dataManager.SearchWithPaginatedAsync<UsersDto>
-                (new List<object> { }, countQuery, dataQuery, getAllUserQuery.DataGridView, getAllUserQuery.Image, customHeaders, pagination.pageNumber, pagination.pageSize);
+                (new List<object> { }, countQuery, dataQuery, req.DataGridView, req.Image, customHeaders, pagination.pageNumber, pagination.pageSize);
 
             pagination.totalPages = (int)Math.Ceiling((double)totalRecords / pagination.pageSize);
 
 
-            pagination.UpdatePagination(getAllUserQuery.Panel, pagination.totalPages, pagination.pageNumber, UpdateRecords, true);
+            pagination.UpdatePagination(req.Panel, pagination.totalPages, pagination.pageNumber, UpdateRecords, true);
 
-            getAllUserQuery.DataGridView.ColumnHeadersVisible = (string.IsNullOrEmpty(result)) ? true : false;
+            req.DataGridView.ColumnHeadersVisible = (string.IsNullOrEmpty(result)) ? true : false;
 
 
-            foreach (DataGridViewColumn column in getAllUserQuery.DataGridView.Columns)
+            foreach (DataGridViewColumn column in req.DataGridView.Columns)
             {
                 if (column.Name == "UserNumber" || column.Name == "Username" || column.Name == "UserLevel" || column.Name == "Status" || column.Name == "IsSessionActive")
                 {

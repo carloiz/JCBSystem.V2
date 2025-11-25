@@ -29,17 +29,17 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
     public class PutNewUserCommandHandler : ILoyTrHandler<PutNewUserCommand>
     {
         private readonly IDataManager dataManager;
-        private readonly CheckIfRecordExists checkIfRecordExists;
+        private readonly ILogicsManager logicsManager;
 
-        public PutNewUserCommandHandler(IDataManager dataManager, CheckIfRecordExists checkIfRecordExists)
+        public PutNewUserCommandHandler(IDataManager dataManager, ILogicsManager logicsManager)
         {
             this.dataManager = dataManager;
-            this.checkIfRecordExists = checkIfRecordExists;
+            this.logicsManager = logicsManager;
         }
 
         public async Task HandleAsync(PutNewUserCommand req)
         {
-            bool isExist = await checkIfRecordExists.ExecuteAsync(
+            bool isExist = await logicsManager.CheckIfRecordExists(
               new List<object> { req.KeyUsername, req.Username },
               "Users",
               "Username NOT LIKE # AND Username = #"
@@ -58,21 +58,21 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
 
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {
-                await ProcessUpdate(connection, transaction, req.Form, req.KeyUsernumber, req.Username, req.Password, req.UserLevel); 
+                await ProcessUpdate(connection, transaction, req); 
             });
         }
 
 
-        private async Task ProcessUpdate(IDbConnection connection, IDbTransaction transaction, Form form, string keyUsernumber, string username, string password, string userLevel)
+        private async Task ProcessUpdate(IDbConnection connection, IDbTransaction transaction, PutNewUserCommand req)
         {
-            string hashPassword = PasswordHelper.HashPassword(password);
+            string hashPassword = PasswordHelper.HashPassword(req.Password);
 
             var userUpdateDto = new UsersDto
             {
-                UserNumber = keyUsernumber,
-                Username = username,
+                UserNumber = req.KeyUsernumber,
+                Username = req.Username,
                 Password = hashPassword,
-                UserLevel = userLevel,
+                UserLevel = req.UserLevel,
             };
 
             await dataManager.UpdateAsync(
@@ -87,9 +87,9 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
             transaction.Commit(); // Commit changes  
 
             // Display the message for successful shift start
-            MessageBox.Show($"Successfully Update {username} Record.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Successfully Update {req.Username} Record.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            FormHelper.CloseFormWithFade(form, true);
+            FormHelper.CloseFormWithFade(req.Form, true);
         }
     }
 }

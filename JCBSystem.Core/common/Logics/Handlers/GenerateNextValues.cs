@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using JCBSystem.Infrastructure.Connection.Interface;
 
 
-namespace JCBSystem.Core.common.Logics
+namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class GenerateNextValues
     {

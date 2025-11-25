@@ -28,7 +28,7 @@ namespace JCBSystem.Login
 
             await loyTr.SendAsync(new ServiceLoginCommand
             {
-                Username = txtPassword.Text,    
+                Username = txtUsername.Text,    
             });
 
             mainForm.OnUserLog(true, txtUsername.Text);

@@ -144,12 +144,14 @@
     <Compile Include="common\Helpers\JwtTokenHelper.cs" />
     <Compile Include="common\Helpers\PasswordHelper.cs" />
     <Compile Include="common\Interfaces\IDataManager.cs" />
+    <Compile Include="common\Interfaces\ILogicsManager.cs" />
     <Compile Include="common\Interfaces\ISessionManager.cs" />
-    <Compile Include="common\Logics\CheckIfRecordExists.cs" />
-    <Compile Include="common\Logics\GenerateNextValues.cs" />
-    <Compile Include="common\Logics\GetComboBoxAttributes.cs" />
-    <Compile Include="common\Logics\GetFieldsValues.cs" />
-    <Compile Include="common\Logics\LoadDataToTextBoxes.cs" />
+    <Compile Include="common\Logics\Handlers\CheckIfRecordExists.cs" />
+    <Compile Include="common\Logics\Handlers\GenerateNextValues.cs" />
+    <Compile Include="common\Logics\Handlers\GetComboBoxAttributes.cs" />
+    <Compile Include="common\Logics\Handlers\GetFieldsValues.cs" />
+    <Compile Include="common\Logics\Handlers\LoadDataToTextBoxes.cs" />
+    <Compile Include="common\Logics\LogicsManager.cs" />
     <Compile Include="FormFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

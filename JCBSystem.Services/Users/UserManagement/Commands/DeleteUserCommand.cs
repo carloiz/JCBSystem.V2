@@ -26,20 +26,20 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
             this.pagination = pagination;
         }
 
-        public async Task HandleAsync(DeleteUserCommand deleteUserCommand)
+        public async Task HandleAsync(DeleteUserCommand req)
         {
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {
-                await ProcessDelete(connection, transaction, deleteUserCommand.Usernumber); // Tawagin ang Process method na may transaction at connection
+                await ProcessDelete(connection, transaction, req); // Tawagin ang Process method na may transaction at connection
             });
         }
 
-        private async Task ProcessDelete(IDbConnection connection, IDbTransaction transaction, string userNumber)
+        private async Task ProcessDelete(IDbConnection connection, IDbTransaction transaction, DeleteUserCommand req)
         {
 
             string whereCondition = "Usernumber = #";
 
-            await dataManager.DeleteAsync(new List<object> { userNumber }, "Users", connection, transaction, whereCondition);
+            await dataManager.DeleteAsync(new List<object> { req.Usernumber }, "Users", connection, transaction, whereCondition);
 
             transaction.Commit(); // Commit changes  
         }

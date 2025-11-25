@@ -24,26 +24,26 @@ namespace JCBSystem.Services.Authentication.Login.Commands
     public class ServiceLoginCommandHandler : ILoyTrHandler<ServiceLoginCommand>
     {
         private readonly RegistryKeys registryKeys;
-        private readonly GetFieldsValues getFieldsValues;
+        private readonly ILogicsManager logicsManager;
         private readonly IDataManager dataManager;
 
 
-        public ServiceLoginCommandHandler(RegistryKeys registryKeys, GetFieldsValues getFieldsValues, IDataManager dataManager)
+        public ServiceLoginCommandHandler(RegistryKeys registryKeys, ILogicsManager logicsManager, IDataManager dataManager)
         {
             this.registryKeys = registryKeys;
-            this.getFieldsValues = getFieldsValues;
+            this.logicsManager = logicsManager;
             this.dataManager = dataManager;
         }
 
-        public async Task HandleAsync(ServiceLoginCommand command)
+        public async Task HandleAsync(ServiceLoginCommand req)
         {
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {
-                await Process(connection, transaction, command.Username); // Tawagin ang Process method na may transaction at connection
+                await Process(connection, transaction, req); // Tawagin ang Process method na may transaction at connection
             });
         }
 
-        private async Task Process(IDbConnection connection, IDbTransaction transaction, string username)
+        private async Task Process(IDbConnection connection, IDbTransaction transaction, ServiceLoginCommand req)
         {
             var (userLoggedIn, existingToken, usernumber) = await IsUserLoggedIn();
 
@@ -59,8 +59,8 @@ namespace JCBSystem.Services.Authentication.Login.Commands
             }
 
             Dictionary<string, object> GetValues = await
-                getFieldsValues.ExecuteAsync(
-                    new List<object> { username }, // Parameters
+                logicsManager.GetFieldsValues(
+                    new List<object> { req.Username }, // Parameters
                     "Users",
                     new List<string> { "Password", "IsSessionActive", "Status", "UserLevel", "UserNumber" }, // this is for like SUM(Quantity) As TotalQuantity
                     new List<string> { "Password", "IsSessionActive", "Status", "UserLevel", "UserNumber" }, // this is fix where the name of field
@@ -83,7 +83,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
                 : false;
 
 
-            if (userPassword == null || !PasswordHelper.VerifyPassword(username, userPassword))
+            if (userPassword == null || !PasswordHelper.VerifyPassword(req.Username, userPassword))
             {
                 throw new Exception("Login Failed, Incorrect Username or Password");
             }
@@ -103,7 +103,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
 
             Dictionary<string, string> keyValues = new Dictionary<string, string>
             {
-                { "Username", username },
+                { "Username", req.Username },
                 { "UserLevel", userLevel }
             };
 
