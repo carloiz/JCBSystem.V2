@@ -1,19 +1,21 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
+using JCBSystem.LoyTr;
+using JCBSystem.LoyTr.Interfaces;
 using JCBSystem.Services.Authentication.Login.Commands;
 using System;
 using System.Windows.Forms;
 
-namespace JCBSystem
+namespace JCBSystem.Login
 {
     public partial class LoginForm : Form
     {
-        private readonly ServiceLoginCommand serviceLoginCommand;
+        private readonly ILoyTr loyTr;
         private MainForm mainForm;
 
-        public LoginForm(ServiceLoginCommand serviceLoginCommand)
+        public LoginForm(ILoyTr loyTr)
         {
             InitializeComponent();
-            this.serviceLoginCommand = serviceLoginCommand;
+            this.loyTr = loyTr;
         }
 
         public void Initialize(MainForm mainForm)
@@ -23,9 +25,11 @@ namespace JCBSystem
 
         private async void loginBtn_Click(object sender, EventArgs e)
         {
-            serviceLoginCommand.Initialize(txtUsername.Text);
 
-            await serviceLoginCommand.HandleAsync();
+            await loyTr.SendAsync(new ServiceLoginCommand
+            {
+                Username = txtPassword.Text,    
+            });
 
             mainForm.OnUserLog(true, txtUsername.Text);
 

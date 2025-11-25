@@ -1,40 +1,40 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
+using JCBSystem.LoyTr.Handlers;
+using JCBSystem.LoyTr.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
-
-namespace JCBSystem.Services.Users.UsersList.Commands
+namespace JCBSystem.Services.Users.UserManagement.Commands
 {
-    public class DeleteUserCommand
+    public class DeleteUserCommand : ILoyTrRequest
+    {
+        public string Usernumber { get; set; }
+    }
+
+    public class DeleteUserCommandHandler : ILoyTrHandler<DeleteUserCommand>
     {
         private readonly IDataManager dataManager;
         private readonly Pagination pagination;
 
-        private string userNumber;
 
-        public DeleteUserCommand(IDataManager dataManager, Pagination pagination) 
+        public DeleteUserCommandHandler(IDataManager dataManager, Pagination pagination) 
         {
             this.dataManager = dataManager;
             this.pagination = pagination;
         }
 
-        public void Initialize(string userNumber)
-        {
-            this.userNumber = userNumber;   
-        }
-
-        public async Task HandlerAsync()
+        public async Task HandleAsync(DeleteUserCommand deleteUserCommand)
         {
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {
-                await ProcessDelete(connection, transaction); // Tawagin ang Process method na may transaction at connection
+                await ProcessDelete(connection, transaction, deleteUserCommand.Usernumber); // Tawagin ang Process method na may transaction at connection
             });
         }
 
-        private async Task ProcessDelete(IDbConnection connection, IDbTransaction transaction)
+        private async Task ProcessDelete(IDbConnection connection, IDbTransaction transaction, string userNumber)
         {
 
             string whereCondition = "Usernumber = #";

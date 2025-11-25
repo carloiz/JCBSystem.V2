@@ -8,18 +8,22 @@ using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
 using JCBSystem.Domain.DTO.Auth;
 using JCBSystem.Domain.DTO.Users;
+using JCBSystem.LoyTr.Handlers;
+using JCBSystem.LoyTr.Interfaces;
 
 
 namespace JCBSystem.Services.Authentication.Login.Commands
 {
-    public class ServiceLogoutCommand
+    public class ServiceLogoutCommand : ILoyTrRequest { }
+
+    public class ServiceLogoutCommandHandler : ILoyTrHandler<ServiceLogoutCommand>
     {
         private readonly IDataManager dataManager;
         private readonly ISessionManager sessionManager;
         private readonly RegistryKeys registryKeys;
         private readonly GetFieldsValues getFieldsValues;
 
-        public ServiceLogoutCommand(IDataManager dataManager, ISessionManager sessionManager, RegistryKeys registryKeys, GetFieldsValues getFieldsValues)
+        public ServiceLogoutCommandHandler(IDataManager dataManager, ISessionManager sessionManager, RegistryKeys registryKeys, GetFieldsValues getFieldsValues)
         {
             this.dataManager = dataManager;
             this.sessionManager = sessionManager;
@@ -27,7 +31,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
             this.getFieldsValues = getFieldsValues;
         }
 
-        public async Task HandleAsync()
+        public async Task HandleAsync(ServiceLogoutCommand request)
         {
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {

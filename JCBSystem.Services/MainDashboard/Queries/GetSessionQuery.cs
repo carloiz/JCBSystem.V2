@@ -4,6 +4,8 @@ using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
 using JCBSystem.Domain.DTO.Auth;
 using JCBSystem.Domain.DTO.Users;
+using JCBSystem.LoyTr.Handlers;
+using JCBSystem.LoyTr.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,14 +14,16 @@ using System.Windows.Forms;
 
 namespace JCBSystem.Services.MainDashboard.Queries
 {
-    public class GetSessionQuery
+    public class GetSessionQuery : ILoyTrRequest { }
+
+    public class GetSessionQueryHandler : ILoyTrHandler<GetSessionQuery>
     {
         private readonly IDataManager dataManager;
         private readonly ISessionManager sessionManager;
         private readonly RegistryKeys registryKeys;
         private readonly CheckIfRecordExists checkIfRecordExists;
 
-        public GetSessionQuery(IDataManager dataManager, ISessionManager sessionManager, RegistryKeys registryKeys, CheckIfRecordExists checkIfRecordExists)
+        public GetSessionQueryHandler(IDataManager dataManager, ISessionManager sessionManager, RegistryKeys registryKeys, CheckIfRecordExists checkIfRecordExists)
         {
             this.dataManager = dataManager;
             this.sessionManager = sessionManager;
@@ -27,7 +31,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
             this.checkIfRecordExists = checkIfRecordExists;
         }
 
-        public async Task HandleAsync()
+        public async Task HandleAsync(GetSessionQuery getSessionQuery)
         {
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {

@@ -64,3 +64,5 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSystem.Se
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSyste.0D4D0232.Up2Date
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSystem.Services.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSystem.Services.pdb
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.LoyTr.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.LoyTr.pdb

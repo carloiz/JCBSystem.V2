@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JCBSystem.WinUi
+namespace JCBSystem.WinUi.Shared
 {
     public class SessionManager : ISessionManager
     {

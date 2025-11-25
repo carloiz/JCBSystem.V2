@@ -1,6 +1,7 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
+using JCBSystem.LoyTr.Interfaces;
 using JCBSystem.Services.Users.UserManagement.Commands;
-using JCBSystem.Services.Users.UsersList.Queries;
+using JCBSystem.Services.Users.UserManagement.Queries;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -9,20 +10,16 @@ namespace JCBSystem.Users
 {
     public partial class UserManagementForm: Form
     {
-        private readonly PostNewUserCommand postNewUserCommand;
-        private readonly PutNewUserCommand putNewUserCommand;
-        private readonly GetAllUserQuery getAllUserQuery;
+        private readonly ILoyTr loyTr;
 
         private UsersListForm listForm;
         private bool isNewRecord;
         private Dictionary<string, object> keyValues;
 
-        public UserManagementForm(PostNewUserCommand postNewUserCommand, PutNewUserCommand putNewUserCommand, GetAllUserQuery getAllUserQuery)
+        public UserManagementForm(ILoyTr loyTr)
         {
             InitializeComponent();
-            this.postNewUserCommand = postNewUserCommand;
-            this.putNewUserCommand = putNewUserCommand;
-            this.getAllUserQuery = getAllUserQuery;
+            this.loyTr = loyTr;
         }
 
         public void Initialize(UsersListForm listForm, bool isNewRecord, Dictionary<string, object> keyValues = null)
@@ -59,13 +56,19 @@ namespace JCBSystem.Users
                 return;
             }
 
-            postNewUserCommand.Initialize(this, txtUsername.Text, txtPassword.Text, cbRole.SelectedItem.ToString());
+            await loyTr.SendAsync(new PostNewUserCommand
+            {
+                Form = this,
+                Username = txtUsername.Text,
+                UserPassword = txtPassword.Text,
+                UserLevel = cbRole.SelectedItem.ToString(), 
+            });
 
-            await postNewUserCommand.HandlerAsync();
-
-            getAllUserQuery.Initialize(listForm.dataGridView1, listForm.panel1);
-            await getAllUserQuery.HandlerAsync();
-
+            await loyTr.SendAsync(new GetAllUserQuery
+            {
+                DataGridView = listForm.dataGridView1,
+                Panel = listForm.panel1
+            });
         }
 
         private async void button2_Click(object sender, EventArgs e)
@@ -95,20 +98,21 @@ namespace JCBSystem.Users
                 return;
             }
 
-            putNewUserCommand.Initialize(
-                this,
-                keyValues["Usernumber"].ToString(), 
-                keyValues["Username"].ToString(), 
-                txtUsername.Text, 
-                txtPassword.Text, 
-                cbRole.SelectedItem.ToString()
-            );
+            await loyTr.SendAsync(new PutNewUserCommand
+            {
+                Form = this,
+                KeyUsernumber = keyValues["Usernumber"].ToString(),
+                KeyUsername = keyValues["Username"].ToString(),
+                Username = txtUsername.Text,
+                Password = txtPassword.Text,
+                UserLevel = cbRole.SelectedItem.ToString(),
+            });
 
-            await putNewUserCommand.HandleAsync();
-
-            getAllUserQuery.Initialize(listForm.dataGridView1, listForm.panel1);
-            await getAllUserQuery.HandlerAsync();
-
+            await loyTr.SendAsync(new GetAllUserQuery
+            {
+                DataGridView = listForm.dataGridView1,
+                Panel = listForm.panel1
+            });
         }
 
 

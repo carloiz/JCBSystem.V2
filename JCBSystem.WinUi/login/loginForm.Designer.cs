@@ -1,4 +1,4 @@
-﻿namespace JCBSystem
+﻿namespace JCBSystem.Login
 {
     partial class LoginForm
     {

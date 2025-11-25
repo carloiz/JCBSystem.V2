@@ -1,17 +1,12 @@
 ﻿using JCBSystem.Core;
-using JCBSystem.Core.common.CRUD;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Users;
-using JCBSystem.Services.Authentication.Login.Commands;
-using JCBSystem.Services.Users.UsersList.Commands;
-using JCBSystem.Services.Users.UsersList.Queries;
+using JCBSystem.LoyTr.Interfaces;
+using JCBSystem.Services.Users.UserManagement.Commands;
+using JCBSystem.Services.Users.UserManagement.Queries;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace JCBSystem.Users
 {
@@ -19,22 +14,23 @@ namespace JCBSystem.Users
     {
      
         private readonly IDataManager dataManager;
-        private readonly DeleteUserCommand deleteUserCommand;
-        private readonly GetAllUserQuery getAllUserQuery;
+        private readonly ILoyTr loyTr;
         private readonly FormFactory formFactory;
 
         private string userNumber;
 
         private Dictionary<string, object> rowValue;
 
-        public UsersListForm(DeleteUserCommand deleteUserCommand, FormFactory formFactory, GetAllUserQuery getAllUserQuery)
+        public UsersListForm(ILoyTr loyTr, FormFactory formFactory)
         {
             InitializeComponent();
-            this.deleteUserCommand = deleteUserCommand;
+            this.loyTr = loyTr;
             this.formFactory = formFactory;
-            this.getAllUserQuery = getAllUserQuery;
-            this.getAllUserQuery.Initialize(dataGridView1, panel1);
-            _ = this.getAllUserQuery.HandlerAsync();
+            _ = this.loyTr.SendAsync(new GetAllUserQuery
+            {
+                DataGridView = dataGridView1,
+                Panel = panel1
+            });
         }
 
 
@@ -99,11 +95,16 @@ namespace JCBSystem.Users
 
         private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.deleteUserCommand.Initialize(userNumber);
-            await deleteUserCommand.HandlerAsync();
+            await loyTr.SendAsync(new DeleteUserCommand
+            {
+                Usernumber = userNumber,
+            });
 
-            getAllUserQuery.Initialize(dataGridView1, panel1);
-            await getAllUserQuery.HandlerAsync();
+            await loyTr.SendAsync(new GetAllUserQuery
+            {
+                DataGridView = dataGridView1,
+                Panel = panel1
+            });
 
             // Display the message for successful shift start
             MessageBox.Show($"Successfully Delete {userNumber} Record.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

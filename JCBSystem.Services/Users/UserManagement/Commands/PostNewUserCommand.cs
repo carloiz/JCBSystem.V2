@@ -1,49 +1,43 @@
-﻿using JCBSystem.Core.common.CRUD;
-using JCBSystem.Core.common.FormCustomization;
+﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
 using JCBSystem.Domain.DTO.Users;
+using JCBSystem.LoyTr.Handlers;
+using JCBSystem.LoyTr.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JCBSystem.Services.Users.UserManagement.Commands
 {
-    public class PostNewUserCommand
+    public class PostNewUserCommand : ILoyTrRequest
+    {
+        public Form Form {  get; set; }
+        public string Username { get; set; }
+        public string UserPassword { get; set; }
+        public string UserLevel { get; set; }
+    }
+
+    public class PostNewUserCommandHandler : ILoyTrHandler<PostNewUserCommand>
     {
         private readonly IDataManager dataManager;
         private readonly CheckIfRecordExists checkIfRecordExists;
         private readonly GenerateNextValues generateNextValues;
 
-        private string userName;
-        private string userPassword;
-        private string userLevel;
-        private Form form;
-
-        public PostNewUserCommand(IDataManager dataManager, CheckIfRecordExists checkIfRecordExists, GenerateNextValues generateNextValues)
+        public PostNewUserCommandHandler(IDataManager dataManager, CheckIfRecordExists checkIfRecordExists, GenerateNextValues generateNextValues)
         {
             this.dataManager = dataManager;
             this.checkIfRecordExists = checkIfRecordExists;
             this.generateNextValues = generateNextValues;
         }
 
-        public void Initialize(Form form, string userName, string userPassword, string userLevel)
-        {
-            this.userName = userName;
-            this.userPassword = userPassword;
-            this.userLevel = userLevel;
-            this.form = form;
-        }
-
-        public async Task HandlerAsync()
+        public async Task HandleAsync(PostNewUserCommand request)
         {
             bool isExist = await checkIfRecordExists.ExecuteAsync(
-                new List<object> { userName },
+                new List<object> { request.Username },
                 "Users",
                 "Username = #"
             );
@@ -61,12 +55,12 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
 
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {
-                await ProcessCreate(connection, transaction); // Tawagin ang Process method na may transaction at connection
+                await ProcessCreate(connection, transaction, request.Form, request.Username, request.UserPassword, request.UserLevel);
             });
         }
 
 
-        private async Task ProcessCreate(IDbConnection connection, IDbTransaction transaction)
+        private async Task ProcessCreate(IDbConnection connection, IDbTransaction transaction, Form form, string userName, string userPassword, string userLevel)
         {
             string password = PasswordHelper.HashPassword(userPassword);
 

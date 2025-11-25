@@ -74,7 +74,6 @@ C:\Users\loiz\Desktop\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSyste.910902F
 C:\Users\loiz\Desktop\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.exe
 C:\Users\loiz\Desktop\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.pdb
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.csproj.AssemblyReference.cache
-C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.loginForm.resources
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.MainForm.resources
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.Properties.Resources.resources
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.Users.UserManagementForm.resources
@@ -150,4 +149,6 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.ValueTup
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSyste.910902F3.Up2Date
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.exe
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.pdb
-C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.exe.config
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.LoyTr.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.LoyTr.pdb
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.Login.LoginForm.resources

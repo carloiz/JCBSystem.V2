@@ -1,0 +1,17 @@
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\JCBSystem.LoyTr.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\JCBSystem.LoyTr.pdb
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\obj\Debug\JCBSystem.LoyTr.csproj.AssemblyReference.cache
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\obj\Debug\JCBSystem.LoyTr.csproj.CoreCompileInputs.cache
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\obj\Debug\JCBSyste.532F8354.Up2Date
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\obj\Debug\JCBSystem.LoyTr.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.LoyTr\obj\Debug\JCBSystem.LoyTr.pdb

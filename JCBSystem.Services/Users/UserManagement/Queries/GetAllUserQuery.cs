@@ -1,36 +1,35 @@
-﻿using JCBSystem.Core.common.CRUD;
-using JCBSystem.Core.common.FormCustomization;
+﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Users;
+using JCBSystem.LoyTr.Handlers;
+using JCBSystem.LoyTr.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JCBSystem.Services.Users.UsersList.Queries
+namespace JCBSystem.Services.Users.UserManagement.Queries
 {
-    public class GetAllUserQuery
+    public class GetAllUserQuery : ILoyTrRequest
+    {
+        public DataGridView DataGridView { get; set; }  
+        public Panel Panel { get; set; }   
+        public List<string> Image {  get; set; } = new List<string>();
+    }
+
+    public class GetAllUserQueryHandler : ILoyTrHandler<GetAllUserQuery>
     {
         private readonly IDataManager dataManager;
         private readonly Pagination pagination;
 
-        private DataGridView dataGridView;
-        private Panel panel;
-
-        public GetAllUserQuery(IDataManager dataManager, Pagination pagination)
+        public GetAllUserQueryHandler(IDataManager dataManager, Pagination pagination)
         {
             this.dataManager = dataManager;
             this.pagination = pagination;
         }
 
 
-        public void Initialize(DataGridView dataGridView, Panel panel)
-        {
-            this.dataGridView = dataGridView;
-            this.panel = panel;
-        }
-
-        public async Task HandlerAsync(List<string> image = null)
+        public async Task HandleAsync(GetAllUserQuery getAllUserQuery)
         {
 
             string countQuery = $@"SELECT COUNT(*) FROM Users";
@@ -52,17 +51,17 @@ namespace JCBSystem.Services.Users.UsersList.Queries
 
             var (result, totalRecords) = await
                 dataManager.SearchWithPaginatedAsync<UsersDto>
-                (new List<object> { }, countQuery, dataQuery, dataGridView, image, customHeaders, pagination.pageNumber, pagination.pageSize);
+                (new List<object> { }, countQuery, dataQuery, getAllUserQuery.DataGridView, getAllUserQuery.Image, customHeaders, pagination.pageNumber, pagination.pageSize);
 
             pagination.totalPages = (int)Math.Ceiling((double)totalRecords / pagination.pageSize);
 
 
-            pagination.UpdatePagination(panel, pagination.totalPages, pagination.pageNumber, UpdateRecords, true);
+            pagination.UpdatePagination(getAllUserQuery.Panel, pagination.totalPages, pagination.pageNumber, UpdateRecords, true);
 
-            dataGridView.ColumnHeadersVisible = (string.IsNullOrEmpty(result)) ? true : false;
+            getAllUserQuery.DataGridView.ColumnHeadersVisible = (string.IsNullOrEmpty(result)) ? true : false;
 
 
-            foreach (DataGridViewColumn column in dataGridView.Columns)
+            foreach (DataGridViewColumn column in getAllUserQuery.DataGridView.Columns)
             {
                 if (column.Name == "UserNumber" || column.Name == "Username" || column.Name == "UserLevel" || column.Name == "Status" || column.Name == "IsSessionActive")
                 {
@@ -83,7 +82,7 @@ namespace JCBSystem.Services.Users.UsersList.Queries
         private Task UpdateRecords(int pageNumber)
         {
             pagination.pageNumber = pageNumber;
-            HandlerAsync();
+            //HandleAsync();
             return Task.CompletedTask;
         }
     }

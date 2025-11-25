@@ -5,12 +5,10 @@ using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
 using JCBSystem.Infrastructure.Connection;
 using JCBSystem.Infrastructure.Connection.Interface;
-using JCBSystem.Services.Authentication.Login.Commands;
-using JCBSystem.Services.MainDashboard.Queries;
-using JCBSystem.Services.Users.UserManagement.Commands;
-using JCBSystem.Services.Users.UsersList.Commands;
-using JCBSystem.Services.Users.UsersList.Queries;
+using JCBSystem.Login;
+using JCBSystem.LoyTr;
 using JCBSystem.Users;
+using JCBSystem.WinUi.Shared;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace JCBSystem.WinUi
@@ -20,6 +18,9 @@ namespace JCBSystem.WinUi
         public static ServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
+
+            // LoyTr
+            services.AddLoyTrFromNamespace("JCBSystem", enableLogging: true);
 
             // ✅ Connection factory selector (handles which DB type to use)
             services.AddSingleton<IConnectionFactorySelector, ConnectionFactorySelector>();
@@ -49,22 +50,14 @@ namespace JCBSystem.WinUi
             services.AddScoped<RegistryKeys>();
             services.AddScoped<Pagination>();
 
-            // ✅ Forms
+            // ✅ Shared Service
             services.AddSingleton<ISessionManager, SessionManager>();
+            services.AddSingleton<TabController>();
+            // ✅ Forms
             services.AddScoped<MainForm>();
             services.AddScoped<LoginForm>();
             services.AddScoped<UserManagementForm>();
             services.AddScoped<UsersListForm>();
-
-
-            // Services
-            services.AddScoped<ServiceLoginCommand>();
-            services.AddScoped<ServiceLogoutCommand>();
-            services.AddScoped<GetSessionQuery>();
-            services.AddScoped<DeleteUserCommand>();
-            services.AddScoped<GetAllUserQuery>();
-            services.AddScoped<PostNewUserCommand>();
-            services.AddScoped<PutNewUserCommand>();
 
 
             return services.BuildServiceProvider();

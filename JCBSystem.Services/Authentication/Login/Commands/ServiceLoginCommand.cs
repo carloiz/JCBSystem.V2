@@ -1,47 +1,49 @@
-﻿using System;
-using System.Data;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using JCBSystem.Core.common.CRUD;
+﻿using JCBSystem.Core.common.CRUD;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
 using JCBSystem.Domain.DTO.Auth;
 using JCBSystem.Domain.DTO.Users;
+using JCBSystem.LoyTr.Handlers;
+using JCBSystem.LoyTr.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace JCBSystem.Services.Authentication.Login.Commands
 {
-    public class ServiceLoginCommand
+    public class ServiceLoginCommand : ILoyTrRequest 
+    { 
+        public string Username { get; set; }    
+    }
+
+    public class ServiceLoginCommandHandler : ILoyTrHandler<ServiceLoginCommand>
     {
         private readonly RegistryKeys registryKeys;
         private readonly GetFieldsValues getFieldsValues;
         private readonly IDataManager dataManager;
 
-        private string username;
 
-        public ServiceLoginCommand(RegistryKeys registryKeys, GetFieldsValues getFieldsValues, IDataManager dataManager)
+        public ServiceLoginCommandHandler(RegistryKeys registryKeys, GetFieldsValues getFieldsValues, IDataManager dataManager)
         {
             this.registryKeys = registryKeys;
             this.getFieldsValues = getFieldsValues;
             this.dataManager = dataManager;
         }
 
-        public void Initialize(string username)
-        {
-            this.username = username;
-        }
-
-        public async Task HandleAsync()
+        public async Task HandleAsync(ServiceLoginCommand command)
         {
             await dataManager.CommitAndRollbackMethod(async (connection, transaction) =>
             {
-                await Process(connection, transaction); // Tawagin ang Process method na may transaction at connection
+                await Process(connection, transaction, command.Username); // Tawagin ang Process method na may transaction at connection
             });
         }
 
-        private async Task Process(IDbConnection connection, IDbTransaction transaction)
+        private async Task Process(IDbConnection connection, IDbTransaction transaction, string username)
         {
             var (userLoggedIn, existingToken, usernumber) = await IsUserLoggedIn();
 

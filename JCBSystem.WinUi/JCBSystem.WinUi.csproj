@@ -62,10 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependecyInjection.cs" />
-    <Compile Include="login\LoginForm.cs">
+    <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="login\LoginForm.Designer.cs">
+    <Compile Include="Login\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -76,20 +76,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionManager.cs" />
-    <Compile Include="users\UserManagementForm.cs">
+    <Compile Include="Shared\SessionManager.cs" />
+    <Compile Include="Shared\TabController.cs" />
+    <Compile Include="Users\UserManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="users\UserManagementForm.Designer.cs">
+    <Compile Include="Users\UserManagementForm.Designer.cs">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="users\UsersListForm.cs">
+    <Compile Include="Users\UsersListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="users\UsersListForm.Designer.cs">
+    <Compile Include="Users\UsersListForm.Designer.cs">
       <DependentUpon>UsersListForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="login\LoginForm.resx">
+    <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -104,10 +105,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="users\UserManagementForm.resx">
+    <EmbeddedResource Include="Users\UserManagementForm.resx">
       <DependentUpon>UserManagementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="users\UsersListForm.resx">
+    <EmbeddedResource Include="Users\UsersListForm.resx">
       <DependentUpon>UsersListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -136,6 +137,10 @@
     <ProjectReference Include="..\JCBSystem.Infrastructure\JCBSystem.Infrastructure.csproj">
       <Project>{0d59c432-0300-4af7-9b87-eaefa1e4e1fa}</Project>
       <Name>JCBSystem.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JCBSystem.LoyTr\JCBSystem.LoyTr.csproj">
+      <Project>{be2ac0ae-b584-493d-8569-e1fe4c061504}</Project>
+      <Name>JCBSystem.LoyTr</Name>
     </ProjectReference>
     <ProjectReference Include="..\JCBSystem.Services\JCBSystem.Services.csproj">
       <Project>{82889682-6044-40cb-be38-788e54952438}</Project>
