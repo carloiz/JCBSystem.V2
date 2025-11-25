@@ -1,5 +1,5 @@
 ﻿using JCBSystem.Core;
-using JCBSystem.Core.common.CRUD;
+using JCBSystem.Core.common.EntityManager;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;

@@ -130,8 +130,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="common\CRUD\DataManager.cs" />
-    <Compile Include="common\CRUD\RegistryKeys.cs" />
+    <Compile Include="common\EntityManager\DataManager.cs" />
+    <Compile Include="common\EntityManager\Handlers\CreateCommandHandler.cs" />
+    <Compile Include="common\EntityManager\Handlers\DeleteCommandHandler.cs" />
+    <Compile Include="common\EntityManager\Handlers\GetAllQueryHandler.cs" />
+    <Compile Include="common\EntityManager\Handlers\GetQueryHandler.cs" />
+    <Compile Include="common\EntityManager\Handlers\TransactionManagerHandler.cs" />
+    <Compile Include="common\EntityManager\Handlers\UpdateCommandHandler.cs" />
+    <Compile Include="common\EntityManager\RegistryKeys.cs" />
     <Compile Include="common\CrystalReport\CrystalReportConfig.cs" />
     <Compile Include="common\CrystalReport\PrinterConfiguration.cs" />
     <Compile Include="common\Enums\Enums.cs" />

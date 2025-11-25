@@ -152,4 +152,3 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.LoyTr.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.LoyTr.pdb
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.Login.LoginForm.resources
-C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.exe.config

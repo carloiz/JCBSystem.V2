@@ -3,7 +3,7 @@ using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JCBSystem.Core.common.CRUD
+namespace JCBSystem.Core.common.EntityManager
 {
     public class RegistryKeys
     {

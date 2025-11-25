@@ -1,16 +1,11 @@
-﻿using JCBSystem.Core.common.CRUD;
-using JCBSystem.Core.common.FormCustomization;
+﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Core.common.Logics;
 using JCBSystem.Domain.DTO.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 

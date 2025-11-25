@@ -3,75 +3,119 @@
   "WorkspaceRootPath": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.services\\users\\usermanagement\\commands\\postnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\commands\\postnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.services\\authentication\\login\\commands\\servicelogincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\authentication\\login\\commands\\servicelogincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.winui\\dependecyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\dependecyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.services\\users\\usermanagement\\queries\\getalluserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\queries\\getalluserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.services\\users\\usermanagement\\commands\\putnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\commands\\putnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.services\\users\\usermanagement\\commands\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\commands\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.services\\maindashboard\\queries\\getsessionquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\maindashboard\\queries\\getsessionquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.services\\authentication\\login\\commands\\servicelogoutcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\authentication\\login\\commands\\servicelogoutcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.winui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.winui\\users\\userslistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\users\\userslistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.winui\\users\\usermanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\users\\usermanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.winui\\shared\\tabcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\shared\\tabcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.winui\\shared\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\shared\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.winui\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\interfaces\\idatamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\interfaces\\idatamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\handlers\\createcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\handlers\\createcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\handlers\\deletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\handlers\\deletecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\handlers\\getallqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\handlers\\getallqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\handlers\\getqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\handlers\\getqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\handlers\\transactionmanagerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\handlers\\transactionmanagerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\handlers\\updatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\handlers\\updatecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\entitymanager\\registrykeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\entitymanager\\registrykeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\interfaces\\ilogicsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\interfaces\\ilogicsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.services\\users\\usermanagement\\queries\\getalluserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\queries\\getalluserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.services\\users\\usermanagement\\commands\\putnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\commands\\putnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.services\\users\\usermanagement\\commands\\postnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\commands\\postnewusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.services\\users\\usermanagement\\commands\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\users\\usermanagement\\commands\\deleteusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.services\\maindashboard\\queries\\getsessionquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\maindashboard\\queries\\getsessionquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.services\\authentication\\login\\commands\\servicelogoutcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\authentication\\login\\commands\\servicelogoutcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.services\\authentication\\login\\commands\\servicelogincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{82889682-6044-40CB-BE38-788E54952438}|JCBSystem.Services\\JCBSystem.Services.csproj|solutionrelative:jcbsystem.services\\authentication\\login\\commands\\servicelogincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.winui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.winui\\users\\userslistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\users\\userslistform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.winui\\users\\usermanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\users\\usermanagementform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.winui\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\login\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.winui\\dependecyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A2FA398-0804-4B4B-AA71-0B186A722B46}|JCBSystem.WinUi\\JCBSystem.WinUi.csproj|solutionrelative:jcbsystem.winui\\dependecyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\logics\\handlers\\loaddatatotextboxes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.core\\common\\logics\\handlers\\loaddatatotextboxes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\logics\\handlers\\loaddatatotextboxes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\logics\\handlers\\checkifrecordexists.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.core\\common\\logics\\handlers\\checkifrecordexists.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\logics\\handlers\\checkifrecordexists.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\logics\\handlers\\getfieldsvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.core\\common\\logics\\handlers\\getfieldsvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\logics\\handlers\\getfieldsvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\logics\\handlers\\getcomboboxattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.core\\common\\logics\\handlers\\getcomboboxattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\logics\\handlers\\getcomboboxattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|c:\\workspace\\workplace\\jcbsystem.winui\\jcbsystem.core\\common\\logics\\handlers\\generatenextvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|C:\\Workspace\\Workplace\\JCBSystem.WinUi\\jcbsystem.core\\common\\logics\\handlers\\generatenextvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}|JCBSystem.Core\\JCBSystem.Core.csproj|solutionrelative:jcbsystem.core\\common\\logics\\handlers\\generatenextvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -82,11 +126,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
+              "Title": "DeleteUserCommand.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
+              "RelativeToolTip": "JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T08:35:10.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PostNewUserCommand.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
+              "RelativeToolTip": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswEMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T08:35:15.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PutNewUserCommand.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
+              "RelativeToolTip": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T08:36:02.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GetAllUserQuery.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Queries\\GetAllUserQuery.cs",
               "RelativeDocumentMoniker": "JCBSystem.Services\\Users\\UserManagement\\Queries\\GetAllUserQuery.cs",
@@ -100,79 +183,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PutNewUserCommand.cs",
-              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
-              "RelativeDocumentMoniker": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
-              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
-              "RelativeToolTip": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PutNewUserCommand.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAADwvzQAAAApAAAAAAAAAA==",
+              "Title": "DependecyInjection.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\DependecyInjection.cs",
+              "RelativeDocumentMoniker": "JCBSystem.WinUi\\DependecyInjection.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\DependecyInjection.cs",
+              "RelativeToolTip": "JCBSystem.WinUi\\DependecyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:36:02.515Z",
+              "WhenOpened": "2025-11-25T08:30:48.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PostNewUserCommand.cs",
-              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
-              "RelativeDocumentMoniker": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
-              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
-              "RelativeToolTip": "JCBSystem.Services\\Users\\UserManagement\\Commands\\PostNewUserCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAkAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ServiceLoginCommand.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
+              "RelativeToolTip": "JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAowAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:35:15.87Z",
+              "WhenOpened": "2025-11-25T08:33:03.729Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DeleteUserCommand.cs",
-              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
-              "RelativeDocumentMoniker": "JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
-              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
-              "RelativeToolTip": "JCBSystem.Services\\Users\\UserManagement\\Commands\\DeleteUserCommand.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:35:10.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "GetSessionQuery.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\MainDashboard\\Queries\\GetSessionQuery.cs",
               "RelativeDocumentMoniker": "JCBSystem.Services\\MainDashboard\\Queries\\GetSessionQuery.cs",
               "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\MainDashboard\\Queries\\GetSessionQuery.cs",
               "RelativeToolTip": "JCBSystem.Services\\MainDashboard\\Queries\\GetSessionQuery.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAkwEAAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T08:34:34.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ServiceLogoutCommand.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLogoutCommand.cs",
               "RelativeDocumentMoniker": "JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLogoutCommand.cs",
               "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLogoutCommand.cs",
               "RelativeToolTip": "JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLogoutCommand.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAkwEMAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T08:33:49.365Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ServiceLoginCommand.cs",
-              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
-              "RelativeDocumentMoniker": "JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
-              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
-              "RelativeToolTip": "JCBSystem.Services\\Authentication\\Login\\Commands\\ServiceLoginCommand.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAowEIAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:33:03.729Z",
               "EditorCaption": ""
             },
             {
@@ -183,7 +240,7 @@
               "RelativeDocumentMoniker": "JCBSystem.WinUi\\MainForm.cs",
               "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\MainForm.cs",
               "RelativeToolTip": "JCBSystem.WinUi\\MainForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T08:32:02.768Z",
               "EditorCaption": ""
@@ -196,7 +253,7 @@
               "RelativeDocumentMoniker": "JCBSystem.WinUi\\Users\\UsersListForm.cs",
               "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Users\\UsersListForm.cs",
               "RelativeToolTip": "JCBSystem.WinUi\\Users\\UsersListForm.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAYwBMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T08:31:54.944Z",
               "EditorCaption": ""
@@ -209,7 +266,7 @@
               "RelativeDocumentMoniker": "JCBSystem.WinUi\\Users\\UserManagementForm.cs",
               "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Users\\UserManagementForm.cs",
               "RelativeToolTip": "JCBSystem.WinUi\\Users\\UserManagementForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAkwA4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T08:31:45.338Z",
               "EditorCaption": ""
@@ -217,32 +274,175 @@
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "TabController.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Shared\\TabController.cs",
+              "RelativeDocumentMoniker": "JCBSystem.WinUi\\Shared\\TabController.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Shared\\TabController.cs",
+              "RelativeToolTip": "JCBSystem.WinUi\\Shared\\TabController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:45:41.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SessionManager.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Shared\\SessionManager.cs",
+              "RelativeDocumentMoniker": "JCBSystem.WinUi\\Shared\\SessionManager.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Shared\\SessionManager.cs",
+              "RelativeToolTip": "JCBSystem.WinUi\\Shared\\SessionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:45:40.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IDataManager.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Interfaces\\IDataManager.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Interfaces\\IDataManager.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Interfaces\\IDataManager.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\Interfaces\\IDataManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:45:24.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GetAllQueryHandler.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\GetAllQueryHandler.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\Handlers\\GetAllQueryHandler.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\GetAllQueryHandler.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\Handlers\\GetAllQueryHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:20:41.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GetQueryHandler.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\GetQueryHandler.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\Handlers\\GetQueryHandler.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\GetQueryHandler.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\Handlers\\GetQueryHandler.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAASwBoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:20:51.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TransactionManagerHandler.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\TransactionManagerHandler.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\Handlers\\TransactionManagerHandler.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\TransactionManagerHandler.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\Handlers\\TransactionManagerHandler.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:28:31.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DeleteCommandHandler.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\DeleteCommandHandler.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\Handlers\\DeleteCommandHandler.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\DeleteCommandHandler.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\Handlers\\DeleteCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:21:36.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "LoginForm.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Login\\LoginForm.cs",
               "RelativeDocumentMoniker": "JCBSystem.WinUi\\Login\\LoginForm.cs",
               "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\Login\\LoginForm.cs",
               "RelativeToolTip": "JCBSystem.WinUi\\Login\\LoginForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T08:31:38.892Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DependecyInjection.cs",
-              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\DependecyInjection.cs",
-              "RelativeDocumentMoniker": "JCBSystem.WinUi\\DependecyInjection.cs",
-              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.WinUi\\DependecyInjection.cs",
-              "RelativeToolTip": "JCBSystem.WinUi\\DependecyInjection.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwC8AAAAvAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "CreateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\CreateCommandHandler.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\Handlers\\CreateCommandHandler.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\CreateCommandHandler.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\Handlers\\CreateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:30:48.661Z",
+              "WhenOpened": "2025-11-25T13:21:09.549Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
+              "Title": "UpdateCommandHandler.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\UpdateCommandHandler.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\Handlers\\UpdateCommandHandler.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\Handlers\\UpdateCommandHandler.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\Handlers\\UpdateCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:21:23.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DataManager.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\DataManager.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\DataManager.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\DataManager.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\DataManager.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAnwBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:21:45.206Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "RegistryKeys.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\RegistryKeys.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\EntityManager\\RegistryKeys.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\EntityManager\\RegistryKeys.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\EntityManager\\RegistryKeys.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T13:44:29.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ILogicsManager.cs",
+              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
+              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
+              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
+              "RelativeToolTip": "JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T08:08:18.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "LoadDataToTextBoxes.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Logics\\Handlers\\LoadDataToTextBoxes.cs",
               "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Logics\\Handlers\\LoadDataToTextBoxes.cs",
@@ -250,12 +450,11 @@
               "RelativeToolTip": "JCBSystem.Core\\common\\Logics\\Handlers\\LoadDataToTextBoxes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:13:04.5Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T08:13:04.5Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 26,
               "Title": "GetFieldsValues.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Logics\\Handlers\\GetFieldsValues.cs",
               "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Logics\\Handlers\\GetFieldsValues.cs",
@@ -263,12 +462,11 @@
               "RelativeToolTip": "JCBSystem.Core\\common\\Logics\\Handlers\\GetFieldsValues.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:11:56.496Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T08:11:56.496Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 27,
               "Title": "GetComboBoxAttributes.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Logics\\Handlers\\GetComboBoxAttributes.cs",
               "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Logics\\Handlers\\GetComboBoxAttributes.cs",
@@ -276,25 +474,11 @@
               "RelativeToolTip": "JCBSystem.Core\\common\\Logics\\Handlers\\GetComboBoxAttributes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:11:09.677Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T08:11:09.677Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ILogicsManager.cs",
-              "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
-              "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
-              "ToolTip": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
-              "RelativeToolTip": "JCBSystem.Core\\common\\Interfaces\\ILogicsManager.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:08:18.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 28,
               "Title": "GenerateNextValues.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Logics\\Handlers\\GenerateNextValues.cs",
               "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Logics\\Handlers\\GenerateNextValues.cs",
@@ -302,12 +486,11 @@
               "RelativeToolTip": "JCBSystem.Core\\common\\Logics\\Handlers\\GenerateNextValues.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAYwEcAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:09:08.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T08:09:08.224Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 25,
               "Title": "CheckIfRecordExists.cs",
               "DocumentMoniker": "C:\\Workspace\\Workplace\\JCBSystem.WinUi\\JCBSystem.Core\\common\\Logics\\Handlers\\CheckIfRecordExists.cs",
               "RelativeDocumentMoniker": "JCBSystem.Core\\common\\Logics\\Handlers\\CheckIfRecordExists.cs",
@@ -315,8 +498,7 @@
               "RelativeToolTip": "JCBSystem.Core\\common\\Logics\\Handlers\\CheckIfRecordExists.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T08:08:16.612Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-25T08:08:16.612Z"
             }
           ]
         }

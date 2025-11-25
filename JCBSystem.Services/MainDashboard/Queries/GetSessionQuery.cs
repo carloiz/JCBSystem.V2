@@ -1,7 +1,6 @@
-﻿using JCBSystem.Core.common.CRUD;
+﻿using JCBSystem.Core.common.EntityManager;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Core.common.Logics;
 using JCBSystem.Domain.DTO.Auth;
 using JCBSystem.Domain.DTO.Users;
 using JCBSystem.LoyTr.Handlers;
