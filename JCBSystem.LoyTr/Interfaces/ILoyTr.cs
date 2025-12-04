@@ -8,8 +8,8 @@ namespace JCBSystem.LoyTr.Interfaces
 {
     public interface ILoyTr
     {
-        Task SendAsync<TRequest>(TRequest request) where TRequest : ILoyTrRequest;
-        Task<TResponse> SendAsync<TResponse>(ILoyTrRequest<TResponse> request);
+        Task SendAsync<TRequest>(TRequest request) where TRequest : IRequest;
+        Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request);
     }
 
 }

@@ -13,21 +13,19 @@ using System.Windows.Forms;
 
 namespace JCBSystem.Services.MainDashboard.Queries
 {
-    public class GetSessionQuery : ILoyTrRequest { }
+    public class GetSessionQuery : IRequest { }
 
-    public class GetSessionQueryHandler : ILoyTrHandler<GetSessionQuery>
+    public class GetSessionQueryHandler : IRequestHandler<GetSessionQuery>
     {
         private readonly IDataManager dataManager;
         private readonly ILogicsManager logicsManager;
         private readonly ISessionManager sessionManager;
-        private readonly RegistryKeys registryKeys;
 
-        public GetSessionQueryHandler(IDataManager dataManager, ILogicsManager logicsManager, ISessionManager sessionManager, RegistryKeys registryKeys)
+        public GetSessionQueryHandler(IDataManager dataManager, ILogicsManager logicsManager, ISessionManager sessionManager)
         {
             this.dataManager = dataManager;
             this.logicsManager = logicsManager;
             this.sessionManager = sessionManager;
-            this.registryKeys = registryKeys;
         }
 
         public async Task HandleAsync(GetSessionQuery getSessionQuery)
@@ -40,7 +38,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
 
         private async Task ProcessSession(IDbConnection connection, IDbTransaction transaction)
         {
-            var userRegistInfo = registryKeys.GetRegistLocalSession<RegistUserDto>();
+            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUserDto>();
 
             string token = userRegistInfo.AuthToken;
             string usernumber = userRegistInfo.UserNumber;
@@ -85,7 +83,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
                     primaryKey: "UserNumber"
                 );
 
-                await registryKeys.DeleteRegistLocalSession<RegistUserDto>();
+                await dataManager.DeleteRegistLocalSession<RegistUserDto>();
 
                 sessionManager.OnUserLog();
 

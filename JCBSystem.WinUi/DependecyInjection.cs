@@ -5,11 +5,10 @@ using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
 using JCBSystem.Infrastructure.Connection;
 using JCBSystem.Infrastructure.Connection.Interface;
-using JCBSystem.Login;
 using JCBSystem.LoyTr;
-using JCBSystem.Users;
 using JCBSystem.WinUi.Shared;
 using Microsoft.Extensions.DependencyInjection;
+using System.Windows.Forms;
 
 namespace JCBSystem.WinUi
 {
@@ -42,21 +41,26 @@ namespace JCBSystem.WinUi
 
             // ✅ Logic layer services
             services.AddScoped<IDataManager, DataManager>();
-
             services.AddScoped<ILogicsManager, LogicsManager>();
-
-            services.AddScoped<RegistryKeys>();
             services.AddScoped<Pagination>();
 
             // ✅ Shared Service
             services.AddSingleton<ISessionManager, SessionManager>();
             services.AddSingleton<TabController>();
             // ✅ Forms
-            services.AddScoped<MainForm>();
-            services.AddScoped<LoginForm>();
-            services.AddScoped<UserManagementForm>();
-            services.AddScoped<UsersListForm>();
-
+            //services.AddTransient<MainForm>();
+            //services.AddTransient<LoginForm>();
+            //services.AddTransient<UserManagementForm>();
+            //services.AddTransient<UsersListForm>();
+            services.Scan(scan => scan
+                .FromApplicationDependencies(asm =>
+                    !asm.IsDynamic &&
+                    !asm.FullName.StartsWith("System") &&
+                    !asm.FullName.StartsWith("Microsoft"))
+                .AddClasses(c => c.AssignableTo<Form>())    // ← detect all WinForms
+                    .AsSelf()
+                    .WithTransientLifetime()
+            );
 
             return services.BuildServiceProvider();
         }

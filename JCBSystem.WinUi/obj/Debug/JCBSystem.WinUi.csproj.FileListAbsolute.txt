@@ -114,7 +114,6 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\Microsoft.Bcl.H
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.Threading.Channels.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.Collections.Immutable.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.Numerics.Vectors.dll
-C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.ValueTuple.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.Core.pdb
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.Core.dll.config
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.Domain.pdb
@@ -145,10 +144,18 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\Microsoft.Bcl.H
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.Threading.Channels.xml
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.Collections.Immutable.xml
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.Numerics.Vectors.xml
-C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.ValueTuple.xml
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSyste.910902F3.Up2Date
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.exe
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.pdb
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.LoyTr.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.LoyTr.pdb
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.Login.LoginForm.resources
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\JCBSystem.Services.dll.config
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\obj\Debug\JCBSystem.WinUi.exe.config
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\Microsoft.Extensions.DependencyModel.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\Scrutor.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.IO.Pipelines.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\Microsoft.Extensions.DependencyModel.xml
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\Scrutor.pdb
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\Scrutor.xml
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.WinUi\bin\Debug\System.IO.Pipelines.xml

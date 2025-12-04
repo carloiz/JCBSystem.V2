@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JCBSystem.LoyTr
 {
@@ -184,8 +182,8 @@ namespace JCBSystem.LoyTr
                         .Where(t => t.IsClass && !t.IsAbstract)
                         .SelectMany(t => t.GetInterfaces(), (t, i) => new { Type = t, Interface = i })
                         .Where(x => x.Interface.IsGenericType &&
-                                   (x.Interface.GetGenericTypeDefinition() == typeof(ILoyTrHandler<>) ||
-                                    x.Interface.GetGenericTypeDefinition() == typeof(ILoyTrHandler<,>)))
+                                   (x.Interface.GetGenericTypeDefinition() == typeof(IRequestHandler<>) ||
+                                    x.Interface.GetGenericTypeDefinition() == typeof(IRequestHandler<,>)))
                         .ToList();
 
                     // Register each handler

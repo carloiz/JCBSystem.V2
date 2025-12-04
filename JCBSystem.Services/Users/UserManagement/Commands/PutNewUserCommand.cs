@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace JCBSystem.Services.Users.UserManagement.Commands
 {
-    public class PutNewUserCommand : ILoyTrRequest
+    public class PutNewUserCommand : IRequest
     {
         public Form Form {  get; set; }
         public string KeyUsernumber { get; set; }
@@ -21,7 +21,7 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
         public string UserLevel { get; set; }
     }
 
-    public class PutNewUserCommandHandler : ILoyTrHandler<PutNewUserCommand>
+    public class PutNewUserCommandHandler : IRequestHandler<PutNewUserCommand>
     {
         private readonly IDataManager dataManager;
         private readonly ILogicsManager logicsManager;

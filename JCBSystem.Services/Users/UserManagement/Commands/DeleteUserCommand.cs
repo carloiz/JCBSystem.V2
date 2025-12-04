@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace JCBSystem.Services.Users.UserManagement.Commands
 {
-    public class DeleteUserCommand : ILoyTrRequest
+    public class DeleteUserCommand : IRequest
     {
         public string Usernumber { get; set; }
     }
 
-    public class DeleteUserCommandHandler : ILoyTrHandler<DeleteUserCommand>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
     {
         private readonly IDataManager dataManager;
         private readonly Pagination pagination;

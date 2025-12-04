@@ -14,21 +14,18 @@ using System.Windows.Forms;
 
 namespace JCBSystem.Services.Authentication.Login.Commands
 {
-    public class ServiceLoginCommand : ILoyTrRequest 
+    public class ServiceLoginCommand : IRequest 
     { 
         public string Username { get; set; }    
     }
 
-    public class ServiceLoginCommandHandler : ILoyTrHandler<ServiceLoginCommand>
+    public class ServiceLoginCommandHandler : IRequestHandler<ServiceLoginCommand>
     {
-        private readonly RegistryKeys registryKeys;
         private readonly ILogicsManager logicsManager;
         private readonly IDataManager dataManager;
 
-
-        public ServiceLoginCommandHandler(RegistryKeys registryKeys, ILogicsManager logicsManager, IDataManager dataManager)
+        public ServiceLoginCommandHandler(ILogicsManager logicsManager, IDataManager dataManager)
         {
-            this.registryKeys = registryKeys;
             this.logicsManager = logicsManager;
             this.dataManager = dataManager;
         }
@@ -132,7 +129,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
                 UserLevel = await DataProtectorHelper.Protect(userLevel),
             };
 
-            registryKeys.CreateRegistLocalSession(userRegistInfo);
+            dataManager.CreateRegistLocalSession(userRegistInfo);
 
             transaction.Commit(); // Commit changes
         }
@@ -140,7 +137,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
         private async Task<(bool, string, string)> IsUserLoggedIn()
         {
 
-            var userRegistInfo = registryKeys.GetRegistLocalSession<RegistUserDto>();
+            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUserDto>();
 
             if (userRegistInfo != null &&
                 !string.IsNullOrEmpty(userRegistInfo.AuthToken) &&

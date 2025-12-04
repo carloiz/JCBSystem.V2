@@ -137,7 +137,7 @@
     <Compile Include="common\EntityManager\Handlers\GetQueryHandler.cs" />
     <Compile Include="common\EntityManager\Handlers\TransactionManagerHandler.cs" />
     <Compile Include="common\EntityManager\Handlers\UpdateCommandHandler.cs" />
-    <Compile Include="common\EntityManager\RegistryKeys.cs" />
+    <Compile Include="common\EntityManager\Handlers\RegistryKeysHandler.cs" />
     <Compile Include="common\CrystalReport\CrystalReportConfig.cs" />
     <Compile Include="common\CrystalReport\PrinterConfiguration.cs" />
     <Compile Include="common\Enums\Enums.cs" />

@@ -64,5 +64,19 @@ namespace JCBSystem.Core.common.EntityManager
         {
             return new UpdateCommandHandler().HandleAsync(entity, tableName, connection, transaction, primaryKey, whereCondition, additionalParameters);
         }
+
+
+        public T GetRegistLocalSession<T>() where T : class, new()
+        {
+            return new RegistryKeysHandler().GetRegistLocalSession<T>();    
+        }
+        public void CreateRegistLocalSession<T>(T regInfo) where T : class
+        {
+            new RegistryKeysHandler().CreateRegistLocalSession<T>(regInfo);  
+        }
+        public Task DeleteRegistLocalSession<T>() where T : class, new()
+        {
+            return new RegistryKeysHandler().DeleteRegistLocalSession<T>();
+        }
     }
 }

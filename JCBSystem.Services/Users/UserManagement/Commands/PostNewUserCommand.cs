@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace JCBSystem.Services.Users.UserManagement.Commands
 {
-    public class PostNewUserCommand : ILoyTrRequest
+    public class PostNewUserCommand : IRequest
     {
         public Form Form {  get; set; }
         public string Username { get; set; }
@@ -20,7 +20,7 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
         public string UserLevel { get; set; }
     }
 
-    public class PostNewUserCommandHandler : ILoyTrHandler<PostNewUserCommand>
+    public class PostNewUserCommandHandler : IRequestHandler<PostNewUserCommand>
     {
         private readonly IDataManager dataManager;
         private readonly ILogicsManager logicsManager;

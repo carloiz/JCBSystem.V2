@@ -29,7 +29,6 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Threa
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Collections.Immutable.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Numerics.Vectors.dll
-C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.ValueTuple.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.Core.pdb
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.Core.dll.config
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.Domain.pdb
@@ -58,7 +57,6 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Threa
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Collections.Immutable.xml
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.Numerics.Vectors.xml
-C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.ValueTuple.xml
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSystem.Services.csproj.AssemblyReference.cache
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSystem.Services.csproj.CoreCompileInputs.cache
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSyste.0D4D0232.Up2Date
@@ -66,3 +64,6 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSystem.Se
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\obj\Debug\JCBSystem.Services.pdb
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.LoyTr.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.LoyTr.pdb
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.Services.dll.config
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.ValueTuple.dll
+C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.ValueTuple.xml

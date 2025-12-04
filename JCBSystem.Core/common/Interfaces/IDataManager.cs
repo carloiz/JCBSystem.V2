@@ -58,5 +58,10 @@ namespace JCBSystem.Core.common.Interfaces
 
         Task CommitAndRollbackMethod(Func<IDbConnection, IDbTransaction, Task> action);
 
+
+        T GetRegistLocalSession<T>() where T : class, new();
+        Task DeleteRegistLocalSession<T>() where T : class, new();
+        void CreateRegistLocalSession<T>(T regInfo) where T : class;
+
     }
 }

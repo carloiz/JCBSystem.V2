@@ -17,9 +17,9 @@ namespace JCBSystem.LoyTr
             _serviceProvider = serviceProvider;
         }
 
-        public async Task SendAsync<TRequest>(TRequest request) where TRequest : ILoyTrRequest
+        public async Task SendAsync<TRequest>(TRequest request) where TRequest : IRequest
         {
-            var handlerType = typeof(ILoyTrHandler<>).MakeGenericType(request.GetType());
+            var handlerType = typeof(IRequestHandler<>).MakeGenericType(request.GetType());
             var handler = _serviceProvider.GetService(handlerType);
 
             if (handler == null)
@@ -29,10 +29,10 @@ namespace JCBSystem.LoyTr
             await (Task)method.Invoke(handler, new object[] { request });
         }
 
-        public async Task<TResponse> SendAsync<TResponse>(ILoyTrRequest<TResponse> request)
+        public async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)
         {
             var requestType = request.GetType();
-            var handlerType = typeof(ILoyTrHandler<,>).MakeGenericType(requestType, typeof(TResponse));
+            var handlerType = typeof(IRequestHandler<,>).MakeGenericType(requestType, typeof(TResponse));
             var handler = _serviceProvider.GetService(handlerType);
 
             if (handler == null)

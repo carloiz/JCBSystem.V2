@@ -13,21 +13,19 @@ using JCBSystem.LoyTr.Interfaces;
 
 namespace JCBSystem.Services.Authentication.Login.Commands
 {
-    public class ServiceLogoutCommand : ILoyTrRequest { }
+    public class ServiceLogoutCommand : IRequest { }
 
-    public class ServiceLogoutCommandHandler : ILoyTrHandler<ServiceLogoutCommand>
+    public class ServiceLogoutCommandHandler : IRequestHandler<ServiceLogoutCommand>
     {
         private readonly IDataManager dataManager;
         private readonly ISessionManager sessionManager;
         private readonly ILogicsManager logicsManager;
-        private readonly RegistryKeys registryKeys;
 
-        public ServiceLogoutCommandHandler(IDataManager dataManager, ISessionManager sessionManager, ILogicsManager logicsManager, RegistryKeys registryKeys)
+        public ServiceLogoutCommandHandler(IDataManager dataManager, ISessionManager sessionManager, ILogicsManager logicsManager)
         {
             this.dataManager = dataManager;
             this.sessionManager = sessionManager;
             this.logicsManager = logicsManager;
-            this.registryKeys = registryKeys;
         }
 
         public async Task HandleAsync(ServiceLogoutCommand request)
@@ -41,7 +39,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
         private async Task ProcessLogout(IDbConnection connection, IDbTransaction transaction)
         {
 
-            var userRegistInfo = registryKeys.GetRegistLocalSession<RegistUserDto>();
+            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUserDto>();
 
             string token = userRegistInfo.AuthToken;
             string usernumber = userRegistInfo.UserNumber;
@@ -119,7 +117,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
 
 
             // Call the method to delete registry values
-            await registryKeys.DeleteRegistLocalSession<RegistUserDto>();
+            await dataManager.DeleteRegistLocalSession<RegistUserDto>();
 
 
             transaction.Commit(); // Commit changes

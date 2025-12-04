@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace JCBSystem.Services.Users.UserManagement.Queries
 {
-    public class GetAllUserQuery : ILoyTrRequest
+    public class GetAllUserQuery : IRequest
     {
         public DataGridView DataGridView { get; set; }  
         public Panel Panel { get; set; }   
         public List<string> Image {  get; set; } = new List<string>();
     }
 
-    public class GetAllUserQueryHandler : ILoyTrHandler<GetAllUserQuery>
+    public class GetAllUserQueryHandler : IRequestHandler<GetAllUserQuery>
     {
         private readonly IDataManager dataManager;
         private readonly Pagination pagination;
