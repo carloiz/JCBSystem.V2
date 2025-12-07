@@ -5,6 +5,7 @@ using JCBSystem.LoyTr.Interfaces;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace JCBSystem.Services.Users.UserManagement.Commands
 {
@@ -16,13 +17,10 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
     {
         private readonly IDataManager dataManager;
-        private readonly Pagination pagination;
 
-
-        public DeleteUserCommandHandler(IDataManager dataManager, Pagination pagination) 
+        public DeleteUserCommandHandler(IDataManager dataManager) 
         {
             this.dataManager = dataManager;
-            this.pagination = pagination;
         }
 
         public async Task HandleAsync(DeleteUserCommand req)
@@ -41,6 +39,9 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
             await dataManager.DeleteAsync(new List<object> { req.Usernumber }, "Users", connection, transaction, whereCondition);
 
             transaction.Commit(); // Commit changes  
+
+            // Display the message for successful shift start
+            MessageBox.Show($"Successfully Delete {req.Usernumber} Record.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

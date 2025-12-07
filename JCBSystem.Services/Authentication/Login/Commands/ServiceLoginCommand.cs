@@ -1,4 +1,5 @@
 ﻿using JCBSystem.Core.common.EntityManager;
+using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Auth;
@@ -17,17 +18,22 @@ namespace JCBSystem.Services.Authentication.Login.Commands
     public class ServiceLoginCommand : IRequest 
     { 
         public string Username { get; set; }    
+        public string Password { get; set; }    
+        public Form Form { get; set; }    
     }
 
     public class ServiceLoginCommandHandler : IRequestHandler<ServiceLoginCommand>
     {
         private readonly ILogicsManager logicsManager;
         private readonly IDataManager dataManager;
+        private readonly ISessionManager sessionManager;
 
-        public ServiceLoginCommandHandler(ILogicsManager logicsManager, IDataManager dataManager)
+
+        public ServiceLoginCommandHandler(ILogicsManager logicsManager, IDataManager dataManager, ISessionManager sessionManager)
         {
             this.logicsManager = logicsManager;
             this.dataManager = dataManager;
+            this.sessionManager = sessionManager;
         }
 
         public async Task HandleAsync(ServiceLoginCommand req)
@@ -78,7 +84,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
                 : false;
 
 
-            if (userPassword == null || !PasswordHelper.VerifyPassword(req.Username, userPassword))
+            if (userPassword == null || !PasswordHelper.VerifyPassword(req.Password, userPassword))
             {
                 throw new Exception("Login Failed, Incorrect Username or Password");
             }
@@ -132,6 +138,11 @@ namespace JCBSystem.Services.Authentication.Login.Commands
             dataManager.CreateRegistLocalSession(userRegistInfo);
 
             transaction.Commit(); // Commit changes
+
+
+            sessionManager.OnUserLog(true, userNumber);
+
+            FormHelper.CloseFormWithFade(req.Form);
         }
 
         private async Task<(bool, string, string)> IsUserLoggedIn()

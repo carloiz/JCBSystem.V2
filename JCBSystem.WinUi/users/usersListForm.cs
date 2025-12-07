@@ -4,6 +4,7 @@ using JCBSystem.Core.common.Interfaces;
 using JCBSystem.LoyTr.Interfaces;
 using JCBSystem.Services.Users.UserManagement.Commands;
 using JCBSystem.Services.Users.UserManagement.Queries;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,17 +16,18 @@ namespace JCBSystem.Users
      
         private readonly IDataManager dataManager;
         private readonly ILoyTr loyTr;
-        private readonly FormFactory formFactory;
+        private readonly IServiceProvider serviceProvider;
 
         private string userNumber;
 
         private Dictionary<string, object> rowValue;
 
-        public UsersListForm(ILoyTr loyTr, FormFactory formFactory)
+        public UsersListForm(ILoyTr loyTr, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             this.loyTr = loyTr;
-            this.formFactory = formFactory;
+            this.serviceProvider = serviceProvider;
+            //this.formFactory = formFactory;
             _ = this.loyTr.SendAsync(new GetAllUserQuery
             {
                 DataGridView = dataGridView1,
@@ -81,14 +83,14 @@ namespace JCBSystem.Users
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = formFactory.Create<UserManagementForm>();
+            var form = serviceProvider.GetRequiredService<UserManagementForm>();
             form.Initialize(this, true, rowValue);
             FormHelper.OpenFormWithFade(form, true);
         }
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = formFactory.Create<UserManagementForm>();
+            var form = serviceProvider.GetRequiredService<UserManagementForm>();
             form.Initialize(this, false, rowValue);
             FormHelper.OpenFormWithFade(form, true);
         }
@@ -105,9 +107,6 @@ namespace JCBSystem.Users
                 DataGridView = dataGridView1,
                 Panel = panel1
             });
-
-            // Display the message for successful shift start
-            MessageBox.Show($"Successfully Delete {userNumber} Record.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using JCBSystem.Core;
-using JCBSystem.Core.common.EntityManager;
+﻿using JCBSystem.Core.common.EntityManager;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Core.common.Logics;
@@ -35,9 +34,6 @@ namespace JCBSystem.WinUi
                 factoryTask.Wait();
                 return factoryTask.Result;
             });
-
-            // ✅ Shared helpers
-            services.AddSingleton<FormFactory>();
 
             // ✅ Logic layer services
             services.AddScoped<IDataManager, DataManager>();

@@ -1,5 +1,4 @@
-﻿using JCBSystem.Core.common.EntityManager;
-using JCBSystem.Core.common.Helpers;
+﻿using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Auth;
 using JCBSystem.Domain.DTO.Users;
@@ -93,7 +92,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
                 return;
             }
 
-            sessionManager.OnUserLog(true,  usernumber);
+            sessionManager.OnUserLog(true, usernumber);
         }
     }
 }

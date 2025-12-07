@@ -10,7 +10,6 @@ namespace JCBSystem.Login
     public partial class LoginForm : Form
     {
         private readonly ILoyTr loyTr;
-        private MainForm mainForm;
 
         public LoginForm(ILoyTr loyTr)
         {
@@ -18,22 +17,14 @@ namespace JCBSystem.Login
             this.loyTr = loyTr;
         }
 
-        public void Initialize(MainForm mainForm)
-        {
-            this.mainForm = mainForm;
-        }
-
         private async void loginBtn_Click(object sender, EventArgs e)
         {
-
             await loyTr.SendAsync(new ServiceLoginCommand
             {
-                Username = txtUsername.Text,    
+                Form = this,
+                Username = txtUsername.Text,   
+                Password = txtPassword.Text,    
             });
-
-            mainForm.OnUserLog(true, txtUsername.Text);
-
-            FormHelper.CloseFormWithFade(this);
         }
     }
 }

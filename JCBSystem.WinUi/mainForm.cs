@@ -9,6 +9,7 @@ using JCBSystem.Services.Authentication.Login.Commands;
 using JCBSystem.Services.MainDashboard.Queries;
 using JCBSystem.Users;
 using JCBSystem.WinUi.Shared;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JCBSystem
 {
@@ -17,15 +18,15 @@ namespace JCBSystem
         //TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
         private readonly ISessionManager sessionManager;
         private readonly TabController tabController;
-        private readonly FormFactory formFactory;
+        private readonly IServiceProvider serviceProvider;
         private readonly ILoyTr loyTr;
 
-        public MainForm(FormFactory formFactory, 
+        public MainForm(IServiceProvider serviceProvider, 
                         ILoyTr loyTr,
                         ISessionManager sessionManager,
                         TabController tabController)
         {
-            this.formFactory = formFactory;
+            this.serviceProvider = serviceProvider;
             this.loyTr = loyTr;
             this.sessionManager = sessionManager;
             this.tabController = tabController;
@@ -53,8 +54,7 @@ namespace JCBSystem
             }
             else
             {
-                var loginForm = formFactory.Create<LoginForm>();
-                loginForm.Initialize(this);
+                var loginForm = serviceProvider.GetRequiredService<LoginForm>();
                 loginForm.MdiParent = this; // Set parent
                 FormHelper.OpenFormWithFade(loginForm, false);
 
@@ -71,13 +71,13 @@ namespace JCBSystem
 
         private void UsersBtn_Click(object sender, EventArgs e)
         {
-            var form = formFactory.Create<UsersListForm>();
+            var form = serviceProvider.GetRequiredService<UsersListForm>();
             tabController.OpenFormInTab(form, "Users");
         }
 
         private void SettingsBtn_Click(object sender, EventArgs e)
         {
-            var form = formFactory.Create<LoginForm>();
+            var form = serviceProvider.GetRequiredService<LoginForm>();
             tabController.OpenFormInTab(form, "Settings");
         }
 

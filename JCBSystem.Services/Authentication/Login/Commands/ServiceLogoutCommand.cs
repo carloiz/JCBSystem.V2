@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using JCBSystem.Core.common.EntityManager;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Auth;
