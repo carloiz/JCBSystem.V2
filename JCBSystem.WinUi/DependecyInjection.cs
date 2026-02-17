@@ -21,13 +21,13 @@ namespace JCBSystem.WinUi
             services.AddLoyTrFromNamespace("JCBSystem", enableLogging: true);
 
             // ✅ Connection factory selector (handles which DB type to use)
-            services.AddSingleton<IConnectionFactorySelector, ConnectionFactorySelector>();
+            services.AddSingleton<IConnectionFactory, ConnectionFactory>();
 
             // ✅ Register a single default factory using the selector
             services.AddScoped<IDbConnectionFactory>(sp =>
             {
                 // kunin ang selector from DI
-                var selector = sp.GetRequiredService<IConnectionFactorySelector>();
+                var selector = sp.GetRequiredService<IConnectionFactory>();
 
                 // gamitin ang async result synchronously (safe since startup)
                 var factoryTask = selector.GetFactory();
@@ -38,7 +38,6 @@ namespace JCBSystem.WinUi
             // ✅ Logic layer services
             services.AddScoped<IDataManager, DataManager>();
             services.AddScoped<ILogicsManager, LogicsManager>();
-            services.AddScoped<Pagination>();
 
             // ✅ Shared Service
             services.AddSingleton<ISessionManager, SessionManager>();
@@ -57,6 +56,7 @@ namespace JCBSystem.WinUi
                     .AsSelf()
                     .WithTransientLifetime()
             );
+
 
             return services.BuildServiceProvider();
         }

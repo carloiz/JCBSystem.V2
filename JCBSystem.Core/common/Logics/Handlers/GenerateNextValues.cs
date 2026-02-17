@@ -12,13 +12,13 @@ namespace JCBSystem.Core.common.Logics.Handlers
     public class GenerateNextValues
     {
 
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactory;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
-        public GenerateNextValues(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public GenerateNextValues(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactory)
         {
             this.dbConnectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.connectionFactory = connectionFactory;
         }
 
         public async Task<string> ByIdAsync(string tableName, string primaryKey, string prefix)
@@ -30,7 +30,7 @@ namespace JCBSystem.Core.common.Logics.Handlers
 
             using (var connection = dbConnectionFactory.CreateConnection())
             {
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
                 bool isOdbc =  connection is OdbcConnection || connection is NpgsqlConnection;
 
@@ -84,7 +84,7 @@ namespace JCBSystem.Core.common.Logics.Handlers
 
             using (var connection = dbConnectionFactory.CreateConnection())
             {
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
                 bool isOdbc = connection is OdbcConnection;
 

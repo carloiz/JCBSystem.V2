@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using JCBSystem.Infrastructure.Data.Seeders;
+using JCBSystem.LoyTr;
+using JCBSystem.LoyTr.Interfaces;
+using JCBSystem.Services.Data.Seeders;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using JCBSystem.Core;
-using JCBSystem.Users;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace JCBSystem.WinUi
 {
@@ -27,5 +28,7 @@ namespace JCBSystem.WinUi
 
             Application.Run(mainForm);
         }
+
     }
+
 }

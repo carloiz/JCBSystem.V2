@@ -18,7 +18,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
         /// <summary>
         /// DELETE 
         /// </summary>
-        /// <param name="filterValues"></param>
+        /// <param name="parameterValues"></param>
         /// <param name="tableName"></param>
         /// <param name="connection"></param>
         /// <param name="transaction"></param>
@@ -27,7 +27,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
         /// <exception cref="ArgumentException"></exception>
         /// <exception cref="Exception"></exception>
         public async Task<int> HandleAsync(
-            List<object> filterValues,
+            List<object> parameterValues,
             string tableName,
             IDbConnection connection,
             IDbTransaction transaction,
@@ -36,7 +36,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
             if (string.IsNullOrWhiteSpace(tableName) || !Regex.IsMatch(tableName, @"^[a-zA-Z0-9_]+$"))
                 throw new ArgumentException("Invalid table name.", nameof(tableName));
 
-            if (filterValues.Count > 0 && string.IsNullOrWhiteSpace(whereConditions))
+            if (parameterValues.Count > 0 && string.IsNullOrWhiteSpace(whereConditions))
                 throw new ArgumentException("WHERE conditions are required when filters are provided.");
 
             var isOdbc = connection is OdbcConnection;
@@ -63,11 +63,11 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                     command.CommandText = query;
 
                     // 🧷 Bind parameters (ODBC uses `?`, SQL Server uses `@paramX`)
-                    for (int i = 0; i < filterValues.Count; i++)
+                    for (int i = 0; i < parameterValues.Count; i++)
                     {
                         var parameter = command.CreateParameter();
                         parameter.ParameterName = isOdbc ? null : $"@param{i}";
-                        parameter.Value = filterValues[i] ?? DBNull.Value;
+                        parameter.Value = parameterValues[i] ?? DBNull.Value;
                         command.Parameters.Add(parameter);
                     }
 

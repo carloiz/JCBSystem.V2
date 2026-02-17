@@ -11,13 +11,13 @@ namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class GetFieldsValues
     {
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactory;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
-        public GetFieldsValues(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public GetFieldsValues(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactory)
         {
             this.dbConnectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.connectionFactory = connectionFactory;
         }
 
         public async Task<Dictionary<string, object>> HandleAsync(
@@ -41,7 +41,7 @@ namespace JCBSystem.Core.common.Logics.Handlers
 
             using (var connection = dbConnectionFactory.CreateConnection())
             {
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
                 var isOdbc = connection is OdbcConnection;
                 var isNpgSql = connection is NpgsqlConnection;

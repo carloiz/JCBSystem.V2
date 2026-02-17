@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,8 +44,16 @@
   <ItemGroup>
     <Compile Include="DTO\Auth\RegistUserDto.cs" />
     <Compile Include="DTO\Users\UsersDto.cs" />
-    <Compile Include="DTO\Users\UsersUpdateDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JCBSystem.Core\JCBSystem.Core.csproj">
+      <Project>{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}</Project>
+      <Name>JCBSystem.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

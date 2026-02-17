@@ -5,14 +5,9 @@ using System.Windows.Forms;
 
 namespace JCBSystem.Core.common.FormCustomization
 {
-    public class Pagination
+    public static class Pagination
     {
-        // Define pagination parameters
-        public int pageNumber = 1; // Page number to fetch
-        public int pageSize = 30;  // Number of items per page
-        public int totalPages = 0;
-
-        public void UpdatePagination(Panel panel, int totalPages, int pageNumber, Func<int, Task> action, bool isButtonsCentered)
+        public static void Update(Panel panel, int totalPages, int pageNumber, Func<int, Task> action, bool isButtonsCentered)
         {
             // Clear existing pagination buttons
             panel.Controls.Clear();
@@ -107,17 +102,16 @@ namespace JCBSystem.Core.common.FormCustomization
                 nextButton.Click += (sender, e) =>
                 {
                     int page = (int)((Button)sender).Tag;
-                    PaginationButton_Click(action, page);
+                    PaginationButton_Click(action, page); // handle defaults to null
                 };
                 nextButton.Location = new Point(x, y);
                 panel.Controls.Add(nextButton);
             }
         }
 
-
-        private async void PaginationButton_Click(Func<int, Task> action, int pageNumber)
+        private static async void PaginationButton_Click(Func<int, Task> action, int pageNumber)
         {
-            await action(pageNumber); 
+            await action(pageNumber);
         }
     }
 }

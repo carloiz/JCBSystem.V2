@@ -1,5 +1,4 @@
-﻿using JCBSystem.Core.common.EntityManager;
-using JCBSystem.Core.common.FormCustomization;
+﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Auth;
@@ -111,7 +110,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
             var tokenString = JwtTokenHelper.GetJWTToken(keyValues);
 
             /////// FOR PRIMARY KEY ONLY 1 DATA UPDATE
-            var userDto = new UserUpdateDto
+            var userDto = new UsersDto
             {
                 UserNumber = userNumber, // always have this for Primary Key
                 IsSessionActive = true,

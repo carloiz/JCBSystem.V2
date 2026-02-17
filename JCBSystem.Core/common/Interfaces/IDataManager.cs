@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -57,6 +58,17 @@ namespace JCBSystem.Core.common.Interfaces
             string whereConditions = null);
 
         Task CommitAndRollbackMethod(Func<IDbConnection, IDbTransaction, Task> action);
+
+        Task<bool> CreateDatabaseIfNotExistsAsync(
+             IDbConnection connection,
+             string databaseName);
+
+        Task CreateAlterTableAsync<T>(
+            string tableName,
+            IDbConnection connection,
+            IDbTransaction transaction = null,
+            string primaryKeyOverride = null,
+            bool autoIncrement = true);
 
 
         T GetRegistLocalSession<T>() where T : class, new();

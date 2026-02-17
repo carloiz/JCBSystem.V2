@@ -14,19 +14,19 @@ namespace JCBSystem.Core.common.CrystalReport
 {
     public class CrystalReportConfig
     {
-        private readonly IDbConnectionFactory _connectionFactory;
+        private readonly IDbConnectionFactory dbConnectionFactory;
         private readonly DatabaseHelper databaseHelper;
 
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactory;
 
 
-        public CrystalReportConfig(IConnectionFactorySelector connectionFactorySelector, 
+        public CrystalReportConfig(IConnectionFactory connectionFactory, 
                                    IDbConnectionFactory dbConnectionFactory, 
                                    DatabaseHelper databaseHelper)
         {
             this.databaseHelper = databaseHelper;
-            this._connectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.dbConnectionFactory = dbConnectionFactory;
+            this.connectionFactory = connectionFactory;
         }
 
         public async Task GenerateReportWithMultipleSubreports(
@@ -49,10 +49,10 @@ namespace JCBSystem.Core.common.CrystalReport
             }
 
             // Open connection using ADO.NET
-            using (var connection = _connectionFactory.CreateConnection())
+            using (var connection = dbConnectionFactory.CreateConnection())
             {
 
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
                 // Initialize a flag to track whether we've set the main report's data source
                 bool mainReportSet = false;
@@ -77,7 +77,7 @@ namespace JCBSystem.Core.common.CrystalReport
 
                         // Execute the query and load data into DataTable
                         // ✅ FIX: await the async adapter creation
-                        var adapter = await connectionFactorySelector.CreateDataAdapter(command);
+                        var adapter = await connectionFactory.CreateDataAdapter(command);
 
                         if (adapter is DbDataAdapter dbAdapter)
                         {

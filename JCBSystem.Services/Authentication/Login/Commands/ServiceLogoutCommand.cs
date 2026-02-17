@@ -99,7 +99,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
                 throw new KeyNotFoundException("Token does not match.");
             }
 
-            var userDto = new UserUpdateDto
+            var userDto = new UsersDto
             {
                 UserNumber = usernumber, // always have this for Primary Key
                 IsSessionActive = false,

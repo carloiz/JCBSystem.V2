@@ -11,13 +11,13 @@ namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class CheckIfRecordExists
     {
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactory;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
-        public CheckIfRecordExists(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public CheckIfRecordExists(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactory)
         {
             this.dbConnectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.connectionFactory = connectionFactory;
         }
 
         public async Task<bool> HandleAsync(List<object> filter, string tableName, string whereCondition)
@@ -29,7 +29,7 @@ namespace JCBSystem.Core.common.Logics.Handlers
 
             using (var connection = dbConnectionFactory.CreateConnection())
             {
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
                 bool isOdbc = connection is OdbcConnection;
 

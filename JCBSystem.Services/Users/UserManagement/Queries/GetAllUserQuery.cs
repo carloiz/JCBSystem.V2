@@ -1,4 +1,5 @@
-﻿using JCBSystem.Core.common.FormCustomization;
+﻿using JCBSystem.Core.common;
+using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Users;
 using JCBSystem.LoyTr.Handlers;
@@ -20,12 +21,10 @@ namespace JCBSystem.Services.Users.UserManagement.Queries
     public class GetAllUserQueryHandler : IRequestHandler<GetAllUserQuery>
     {
         private readonly IDataManager dataManager;
-        private readonly Pagination pagination;
 
-        public GetAllUserQueryHandler(IDataManager dataManager, Pagination pagination)
+        public GetAllUserQueryHandler(IDataManager dataManager)
         {
             this.dataManager = dataManager;
-            this.pagination = pagination;
         }
 
 
@@ -35,7 +34,7 @@ namespace JCBSystem.Services.Users.UserManagement.Queries
             string countQuery = $@"SELECT COUNT(*) FROM Users";
 
             // Query to fetch paginated data
-            string dataQuery = $@"SELECT * FROM Users";
+            string dataQuery = $@"SELECT * FROM Users ORDER BY UserNumber";
 
 
             var customHeaders = new Dictionary<string, string>
@@ -51,12 +50,12 @@ namespace JCBSystem.Services.Users.UserManagement.Queries
 
             var (result, totalRecords) = await
                 dataManager.SearchWithPaginatedAsync<UsersDto>
-                (new List<object> { }, countQuery, dataQuery, req.DataGridView, req.Image, customHeaders, pagination.pageNumber, pagination.pageSize);
+                (new List<object> { }, countQuery, dataQuery, req.DataGridView, req.Image, customHeaders, SystemSettings.pageNumber, SystemSettings.pageSize);
 
-            pagination.totalPages = (int)Math.Ceiling((double)totalRecords / pagination.pageSize);
+            SystemSettings.totalPages = (int)Math.Ceiling((double)totalRecords / SystemSettings.pageSize);
 
 
-            pagination.UpdatePagination(req.Panel, pagination.totalPages, pagination.pageNumber, UpdateRecords, true);
+            Pagination.Update(req.Panel, SystemSettings.totalPages, SystemSettings.pageNumber, UpdateRecords, true);
 
             req.DataGridView.ColumnHeadersVisible = (string.IsNullOrEmpty(result)) ? true : false;
 
@@ -76,14 +75,13 @@ namespace JCBSystem.Services.Users.UserManagement.Queries
                     column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; // Keep other columns evenly distributed
                 }
             }
-        }
 
-
-        private Task UpdateRecords(int pageNumber)
-        {
-            pagination.pageNumber = pageNumber;
-            //HandleAsync();
-            return Task.CompletedTask;
+            async Task UpdateRecords(int pageNumber)
+            {
+                SystemSettings.pageNumber = pageNumber;
+                await HandleAsync(req);
+                SystemSettings.pageNumber = 1;
+            }
         }
     }
 }

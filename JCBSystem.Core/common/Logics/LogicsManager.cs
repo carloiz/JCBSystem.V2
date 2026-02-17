@@ -13,9 +13,9 @@ namespace JCBSystem.Core.common.Logics
     public class LogicsManager : ILogicsManager
     {
         private readonly IDbConnectionFactory dbConnectionFactory;
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactorySelector;
 
-        public LogicsManager(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public LogicsManager(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactorySelector)
         {
             this.dbConnectionFactory = dbConnectionFactory;
             this.connectionFactorySelector = connectionFactorySelector;

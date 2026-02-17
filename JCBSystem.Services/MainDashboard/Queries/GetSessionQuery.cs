@@ -67,7 +67,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
                     throw new KeyNotFoundException("User not found in Session.");
                 }
 
-                var userDto = new UserUpdateDto
+                var userDto = new UsersDto
                 {
                     UserNumber = usernumber, // always have this for Primary Key
                     IsSessionActive = false,

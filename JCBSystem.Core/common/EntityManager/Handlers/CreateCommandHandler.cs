@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using JCBSystem.Core.common.Attributes;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,9 +41,25 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
 
             try
             {
-                var properties = typeof(T).GetProperties()
-                                          .Where(p => p.CanRead && p.GetValue(entity) != null)
-                                          .ToArray();
+                var properties = typeof(T)
+                       .GetProperties()
+                       .Where(p =>
+                       {
+                           if (!p.CanRead) return false;
+
+                           var value = p.GetValue(entity);
+
+                           // NULL value
+                           if (value == null)
+                           {
+                               // include ONLY if explicitly allowed
+                               return Attribute.IsDefined(p, typeof(AllowNullUpdateAttribute));
+                           }
+
+                           // has value → update
+                           return true;
+                       })
+                       .ToArray();
 
                 if (!properties.Any())
                     throw new ArgumentException("Entity has no readable properties with values.");

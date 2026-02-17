@@ -1,6 +1,7 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Infrastructure.Connection;
 using JCBSystem.Infrastructure.Connection.Interface;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -16,18 +17,14 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
 {
     public class GetAllQueryHandler
     {
-        private readonly Color headerForeColor = Color.White;
-        private readonly Color headerBackColor = Color.FromArgb(64, 64, 64);
 
-        private readonly string dateFormat = "dddd, MMMM dd, yyyy hh:mm tt";
-
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactory;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
-        public GetAllQueryHandler(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public GetAllQueryHandler(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactory)
         {
             this.dbConnectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.connectionFactory = connectionFactory;
         }
         
         /// <summary>
@@ -62,13 +59,21 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
 
             using (var connection = dbConnectionFactory.CreateConnection())
             {
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
 
                 bool isOdbc = connection is OdbcConnection;
+                bool isNpgSql = connection is NpgsqlConnection;
 
                 string finalCountQuery = Modules.ReplaceSharpWithParams(countQuery, isOdbc);
                 string finalDataQuery = Modules.ReplaceSharpWithParams(dataQuery, isOdbc);
+
+                if (isOdbc)
+                    finalDataQuery += " LIMIT ? OFFSET ?";
+                else if (isNpgSql)
+                    finalDataQuery += " LIMIT @PageSize OFFSET @Offset";
+                else
+                    finalDataQuery += " OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
 
 
                 if (!string.IsNullOrEmpty(finalCountQuery))
@@ -99,15 +104,16 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                 {
 
                     // Explicitly create parameters for pagination
+                    var pageSizeParameter = command.CreateParameter();
+                    pageSizeParameter.ParameterName = isOdbc ? "?" : "@PageSize";
+                    pageSizeParameter.Value = pageSize;
+                    command.Parameters.Add(pageSizeParameter);
+
                     var offsetParameter = command.CreateParameter();
-                    offsetParameter.ParameterName = "@Offset";
+                    offsetParameter.ParameterName = isOdbc ? "?" : "@Offset";
                     offsetParameter.Value = offset;
                     command.Parameters.Add(offsetParameter);
 
-                    var pageSizeParameter = command.CreateParameter();
-                    pageSizeParameter.ParameterName = "@PageSize";
-                    pageSizeParameter.Value = pageSize;
-                    command.Parameters.Add(pageSizeParameter);
 
                     command.CommandText = finalDataQuery;
 
@@ -136,13 +142,13 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                                             }
                                         }
                                         // Check if the property is a boolean (bool)
-                                        else if (prop.Name == "Status")
-                                        {
-                                            // Convert bool to string ("Active" or "Inactive") specifically for the "Status" property
-                                            bool boolValue = Convert.ToBoolean(columnValue);
-                                            string displayValue = boolValue ? "Active" : "Inactive";
-                                            prop.SetValue(entity, displayValue);
-                                        }
+                                        //else if (prop.Name == "Status")
+                                        //{
+                                        //    // Convert bool to string ("Active" or "Inactive") specifically for the "Status" property
+                                        //    bool boolValue = Convert.ToBoolean(columnValue);
+                                        //    string displayValue = boolValue ? "Active" : "Inactive";
+                                        //    prop.SetValue(entity, displayValue);
+                                        //}
                                         // Handle other types
                                         else if (columnValue != null && prop.PropertyType.IsAssignableFrom(columnValue.GetType()))
                                         {
@@ -175,8 +181,8 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
             dataGrid.DataSource = resultList;
             dataGrid.RowHeadersVisible = false;
             dataGrid.EnableHeadersVisualStyles = false;
-            dataGrid.ColumnHeadersDefaultCellStyle.BackColor = headerBackColor;
-            dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = headerForeColor;
+            dataGrid.ColumnHeadersDefaultCellStyle.BackColor = SystemSettings.headerBackColor;
+            dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = SystemSettings.headerForeColor;
             dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Regular);
             dataGrid.ColumnHeadersDefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
 
@@ -187,7 +193,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                 if (e.Value is DateTime dateValue)
                 {
                     // Format the DateTime for display
-                    e.Value = dateValue.ToString(dateFormat, CultureInfo.InvariantCulture);
+                    e.Value = dateValue.ToString(SystemSettings.dateFormat, CultureInfo.InvariantCulture);
                     e.FormattingApplied = true;
                 }
             };
@@ -207,14 +213,27 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
             // Apply custom column headers
             if (customColumnHeaders != null)
             {
-                foreach (var column in dataGrid.Columns.Cast<DataGridViewColumn>())
+                foreach (var key in customColumnHeaders.Keys)
                 {
-                    if (customColumnHeaders.ContainsKey(column.Name))
+                    if (dataGrid.Columns.Contains(key))
                     {
-                        column.HeaderText = customColumnHeaders[column.Name];
+                        var column = dataGrid.Columns[key];
+                        column.HeaderText = customColumnHeaders[key];
+                        column.Visible = true;
+                        column.DisplayIndex = customColumnHeaders.Keys.ToList().IndexOf(key);
+                    }
+                }
+
+                // Hide all other columns
+                foreach (DataGridViewColumn column in dataGrid.Columns)
+                {
+                    if (!customColumnHeaders.ContainsKey(column.Name))
+                    {
+                        column.Visible = false;
                     }
                 }
             }
+
 
             // Exclude image columns from AutoSizeColumnsMode.Fill
             if (imageColumns != null && imageColumns.Count > 0)

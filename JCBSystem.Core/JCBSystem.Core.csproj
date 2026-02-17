@@ -86,6 +86,10 @@
     <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -130,8 +134,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\Attributes\AllowNullUpdateAttribute.cs" />
     <Compile Include="common\EntityManager\DataManager.cs" />
+    <Compile Include="common\EntityManager\Handlers\TableSchemaHandler.cs" />
     <Compile Include="common\EntityManager\Handlers\CreateCommandHandler.cs" />
+    <Compile Include="common\EntityManager\Handlers\DatabaseSchemaHandler.cs" />
     <Compile Include="common\EntityManager\Handlers\DeleteCommandHandler.cs" />
     <Compile Include="common\EntityManager\Handlers\GetAllQueryHandler.cs" />
     <Compile Include="common\EntityManager\Handlers\GetQueryHandler.cs" />
@@ -158,6 +165,7 @@
     <Compile Include="common\Logics\Handlers\GetFieldsValues.cs" />
     <Compile Include="common\Logics\Handlers\LoadDataToTextBoxes.cs" />
     <Compile Include="common\Logics\LogicsManager.cs" />
+    <Compile Include="common\SystemSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

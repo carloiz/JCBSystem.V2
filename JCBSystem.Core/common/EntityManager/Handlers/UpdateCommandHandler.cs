@@ -1,4 +1,5 @@
-﻿using JCBSystem.Core.common.FormCustomization;
+﻿using JCBSystem.Core.common.Attributes;
+using JCBSystem.Core.common.FormCustomization;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,32 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                 if (isOdbc)
                     tableName.ToLower();
 
-                var properties = typeof(T).GetProperties().Where(p => p.CanRead).ToArray();
+                var properties = typeof(T)
+                    .GetProperties()
+                    .Where(p =>
+                    {
+                        if (!p.CanRead) return false;
+
+                        // never update PK
+                        if (!string.IsNullOrEmpty(primaryKey) &&
+                            string.Equals(p.Name, primaryKey, StringComparison.OrdinalIgnoreCase))
+                            return false;
+
+                        var value = p.GetValue(entity);
+
+                        // NULL value
+                        if (value == null)
+                        {
+                            // include ONLY if explicitly allowed
+                            return Attribute.IsDefined(p, typeof(AllowNullUpdateAttribute));
+                        }
+
+                        // has value → update
+                        return true;
+                    })
+                    .ToArray();
+
+
 
                 var setProperties = string.IsNullOrEmpty(primaryKey)
                     ? properties

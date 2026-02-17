@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCBSystem.Services", "JCBSy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCBSystem.LoyTr", "JCBSystem.LoyTr\JCBSystem.LoyTr.csproj", "{BE2AC0AE-B584-493D-8569-E1FE4C061504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JCBSystem.DbMIgrationTool", "JCBSystem.DbMIgrationTool\JCBSystem.DbMIgrationTool.csproj", "{25095D38-2754-4266-A055-A24800DCA1EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BE2AC0AE-B584-493D-8569-E1FE4C061504}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE2AC0AE-B584-493D-8569-E1FE4C061504}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE2AC0AE-B584-493D-8569-E1FE4C061504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25095D38-2754-4266-A055-A24800DCA1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25095D38-2754-4266-A055-A24800DCA1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25095D38-2754-4266-A055-A24800DCA1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25095D38-2754-4266-A055-A24800DCA1EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

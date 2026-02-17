@@ -1,10 +1,6 @@
-﻿using JCBSystem.Infrastructure.Connection;
-using JCBSystem.Infrastructure.Connection.Interface;
+﻿using JCBSystem.Infrastructure.Connection.Interface;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,10 +8,10 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
 {
     public class TransactionManagerHandler
     {
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactorySelector;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
-        public TransactionManagerHandler(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public TransactionManagerHandler(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactorySelector)
         {
             this.dbConnectionFactory = dbConnectionFactory;
             this.connectionFactorySelector = connectionFactorySelector;

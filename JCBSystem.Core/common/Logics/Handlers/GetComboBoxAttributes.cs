@@ -9,13 +9,13 @@ namespace JCBSystem.Core.common.Logics.Handlers
 {
     public class GetComboBoxAttributes
     {
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactory;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
-        public GetComboBoxAttributes(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public GetComboBoxAttributes(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactory)
         {
             this.dbConnectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.connectionFactory = connectionFactory;
         }
 
         public async Task HandleAsync(ComboBox comboBox, string query)
@@ -24,7 +24,7 @@ namespace JCBSystem.Core.common.Logics.Handlers
 
             using (var connection = dbConnectionFactory.CreateConnection())
             {
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
                 var isOdbc = connection is OdbcConnection;
 

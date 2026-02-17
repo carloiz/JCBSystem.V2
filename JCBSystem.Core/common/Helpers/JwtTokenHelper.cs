@@ -28,7 +28,7 @@ namespace JCBSystem.Core.common.Helpers
 
             var jwtToken = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.UtcNow.AddDays(7),
+                expires: SystemSettings.tokenExpiration,
                 signingCredentials: credentials
             );
 

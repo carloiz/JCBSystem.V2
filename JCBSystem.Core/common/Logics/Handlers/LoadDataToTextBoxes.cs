@@ -13,13 +13,13 @@ namespace JCBSystem.Core.common.Logics.Handlers
     public class LoadDataToTextBoxes
     {
 
-        private readonly IConnectionFactorySelector connectionFactorySelector;
+        private readonly IConnectionFactory connectionFactory;
         private readonly IDbConnectionFactory dbConnectionFactory;
 
-        public LoadDataToTextBoxes(IDbConnectionFactory dbConnectionFactory, IConnectionFactorySelector connectionFactorySelector)
+        public LoadDataToTextBoxes(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactory)
         {
             this.dbConnectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.connectionFactory = connectionFactory;
         }
 
         private readonly string dateFormat = "dddd, MMMM dd, yyyy hh:mm tt";
@@ -44,7 +44,7 @@ namespace JCBSystem.Core.common.Logics.Handlers
             {
                 using (var connection = dbConnectionFactory.CreateConnection())
                 {
-                    await connectionFactorySelector.OpenConnectionAsync(connection);
+                    await connectionFactory.OpenConnectionAsync(connection);
 
                     var isOdbc = connection is OdbcConnection || connection is NpgsqlConnection;
 
