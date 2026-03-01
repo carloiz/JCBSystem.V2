@@ -8,13 +8,13 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
 {
     public class TransactionManagerHandler
     {
-        private readonly IConnectionFactory connectionFactorySelector;
         private readonly IDbConnectionFactory dbConnectionFactory;
+        private readonly IConnectionFactory connectionFactory;
 
-        public TransactionManagerHandler(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactorySelector)
+        public TransactionManagerHandler(IDbConnectionFactory dbConnectionFactory, IConnectionFactory connectionFactory)
         {
             this.dbConnectionFactory = dbConnectionFactory;
-            this.connectionFactorySelector = connectionFactorySelector;
+            this.connectionFactory = connectionFactory;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
         {
             using (var connection = dbConnectionFactory.CreateConnection())
             {
-                await connectionFactorySelector.OpenConnectionAsync(connection);
+                await connectionFactory.OpenConnectionAsync(connection);
 
                 using (var transaction = connection.BeginTransaction())
                 {

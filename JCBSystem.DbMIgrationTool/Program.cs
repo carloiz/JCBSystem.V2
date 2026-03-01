@@ -5,13 +5,14 @@ using JCBSystem.Infrastructure.Connection.Interface;
 using JCBSystem.Services.Data.Seeders;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Threading.Tasks;
 
 
 namespace JCBSystem.DbMIgrationTool
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // 1️⃣ Setup DI container
             var services = new ServiceCollection();
@@ -39,7 +40,7 @@ namespace JCBSystem.DbMIgrationTool
 
             // 4️⃣ Resolve & run
             var bootstrapper = provider.GetRequiredService<DatabaseBootstrapper>();
-            bootstrapper.RunAsync();
+            await bootstrapper.RunAsync();
         }
     }
 }

@@ -12,15 +12,18 @@ namespace JCBSystem.Services.Data.Seeders
 {
     public class DatabaseBootstrapper
     {
-        private readonly IDataManager _dataManager;
-        private readonly IConnectionFactory _connectionFactory;
+        private readonly IDataManager dataManager;
+        private readonly IConnectionFactory connectionFactory;
+        private readonly IDbConnectionFactory dbConnectionFactory;
 
         public DatabaseBootstrapper(
             IDataManager dataManager,
-            IConnectionFactory connectionFactory)
+            IConnectionFactory connectionFactory,
+            IDbConnectionFactory dbConnectionFactory)
         {
-            _dataManager = dataManager;
-            _connectionFactory = connectionFactory;
+            this.dataManager = dataManager;
+            this.connectionFactory = connectionFactory;
+            this.dbConnectionFactory = dbConnectionFactory;
         }
 
         public async Task RunAsync()
@@ -28,69 +31,141 @@ namespace JCBSystem.Services.Data.Seeders
             try
             {
                 string databaseName = ConfigurationManager.AppSettings["DatabaseName"];
-
-                // Get connection string
                 string baseConnStr = ConfigurationManager
                     .ConnectionStrings["ConnectionString"]
                     .ConnectionString;
 
-                // 1️⃣ MASTER connection (no database)
-                var factory = await _connectionFactory.GetFactory();
-                using (var masterConnection = factory.CreateConnection())
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine("🚀 DATABASE BOOTSTRAP STARTED");
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine($"📦 Target Database: {databaseName}");
+                Console.WriteLine($"🔗 Original Connection: {baseConnStr}");
+                Console.WriteLine();
+
+                // 1️⃣ MASTER connection (connect to master database)
+                string masterConnStr = ManipulateDatabaseInConnectionString(
+                    baseConnStr,
+                    null,  // ← Connect to master database
+                    removeDatabase: true);
+
+                Console.WriteLine("Original Connection String: {0}", baseConnStr);
+                Console.WriteLine("Master Connection String: {0}", masterConnStr);
+
+
+                using (var masterConnection = dbConnectionFactory.CreateConnection())
                 {
-                    masterConnection.ConnectionString = baseConnStr;
+                    masterConnection.ConnectionString = masterConnStr;
 
-                    // Open connection
-                    await _connectionFactory.OpenConnectionAsync(masterConnection);
+                    await connectionFactory.OpenConnectionAsync(masterConnection);
 
-                    // Create database if not exists
-                    await _dataManager.CreateDatabaseIfNotExistsAsync(
+                    await dataManager.CreateDatabaseIfNotExistsAsync(
                         masterConnection,
                         databaseName);
+
+                    Console.WriteLine($"✅ Database '{databaseName}' checked/created successfully");
                 }
 
-                // 3️⃣ ENSURE database part (manual & safe)
-                string realConnStr;
+                Console.WriteLine();
 
-                if (baseConnStr.IndexOf("database=", StringComparison.OrdinalIgnoreCase) >= 0)
+                // 2️⃣ REAL database connection (add/replace database)
+                string realConnStr = ManipulateDatabaseInConnectionString(
+                    baseConnStr,
+                    databaseName,
+                    removeDatabase: false);
+
+                using (var dbConnection = dbConnectionFactory.CreateConnection())
                 {
-                    // replace existing database
-                    realConnStr = System.Text.RegularExpressions.Regex.Replace(
-                        baseConnStr,
-                        @"database\s*=\s*[^;]+",
-                        $"Database={databaseName}",
+                    dbConnection.ConnectionString = realConnStr;
+
+                    await connectionFactory.OpenConnectionAsync(dbConnection);
+
+                    using (var transaction = dbConnection.BeginTransaction())
+                    {
+                        await ProcessCreate(dbConnection, transaction);
+                    }
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine("✅ DATABASE BOOTSTRAP COMPLETED SUCCESSFULLY!");
+                Console.WriteLine("═══════════════════════════════════════════════════");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine("🔥 DATABASE BOOTSTRAP ERROR");
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine(ex.ToString());
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Generic method to manipulate database in connection string.
+        /// Supports both SQL Server (Initial Catalog) and MySQL/ODBC (database).
+        /// </summary>
+        private string ManipulateDatabaseInConnectionString(
+            string connStr,
+            string databaseName,
+            bool removeDatabase = false)
+        {
+            if (string.IsNullOrWhiteSpace(connStr))
+                throw new ArgumentException("Connection string cannot be null or empty", nameof(connStr));
+
+            // Detect if SQL Server or MySQL/ODBC
+            bool isSqlServer = connStr.IndexOf("Initial Catalog", StringComparison.OrdinalIgnoreCase) >= 0
+                || connStr.IndexOf("Data Source", StringComparison.OrdinalIgnoreCase) >= 0
+                || connStr.IndexOf("Server", StringComparison.OrdinalIgnoreCase) >= 0 && connStr.IndexOf("Driver", StringComparison.OrdinalIgnoreCase) < 0;
+
+            string dbKey = isSqlServer ? "Initial Catalog" : "database";
+            string pattern = isSqlServer
+                ? @"Initial\s+Catalog\s*=\s*[^;]+"
+                : @"database\s*=\s*[^;]+";
+
+            string result = connStr;
+
+            if (removeDatabase)
+            {
+                // Remove database from connection string
+                result = System.Text.RegularExpressions.Regex.Replace(
+                    result,
+                    pattern + ";?",
+                    "",
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+                // Clean up double semicolons and trailing semicolons
+                result = result.Replace(";;", ";").TrimEnd(';');
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(databaseName))
+                    throw new ArgumentException("Database name cannot be null or empty when adding database", nameof(databaseName));
+
+                // Check if database key exists
+                bool hasDatabase = System.Text.RegularExpressions.Regex.IsMatch(
+                    result,
+                    pattern,
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+                if (hasDatabase)
+                {
+                    // Replace existing database
+                    result = System.Text.RegularExpressions.Regex.Replace(
+                        result,
+                        pattern,
+                        $"{dbKey}={databaseName}",
                         System.Text.RegularExpressions.RegexOptions.IgnoreCase);
                 }
                 else
                 {
-                    // append database
-                    realConnStr = baseConnStr.TrimEnd(';') + $";Database={databaseName}";
-                }
-
-                // 4️⃣ REAL database connection
-                var realFactory = await _connectionFactory.GetFactory();
-                using (var dbConnection = realFactory.CreateConnection())
-                {
-                    dbConnection.ConnectionString = realConnStr;
-
-                    await _connectionFactory.OpenConnectionAsync(dbConnection);
-
-                    using (var transaction = dbConnection.BeginTransaction())
-                    {
-
-                        await _dataManager.CommitAndRollbackMethod(async (conn, trans) =>
-                        {
-                            await ProcessCreate(dbConnection, transaction);
-                        });
-                    }
+                    // Append database
+                    result = result.TrimEnd(';') + $";{dbKey}={databaseName}";
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("🔥 DATABASE BOOTSTRAP ERROR");
-                Console.WriteLine(ex.ToString());
-                throw;
-            }
+
+            return result;
         }
 
         private async Task ProcessCreate(IDbConnection connection, IDbTransaction transaction)
@@ -113,17 +188,17 @@ namespace JCBSystem.Services.Data.Seeders
                 RecordDate = dateToday
             };
 
-            // 5️⃣ Ensure TABLES
-            await _dataManager.CreateAlterTableAsync<UsersDto>(
+            // Ensure TABLES
+            await dataManager.CreateAlterTableAsync<UsersDto>(
                 "Users",
                 connection,
                 transaction);
 
-            await _dataManager.InsertAsync(userCreateDto, "Users", connection, transaction, "UserNumber");
+            await dataManager.InsertAsync(userCreateDto, "Users", connection, transaction, "UserNumber");
 
             transaction.Commit();
 
-            Console.WriteLine("Default User Created.");
+            Console.WriteLine("✅ Default User Created.");
         }
     }
 }

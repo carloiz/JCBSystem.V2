@@ -99,6 +99,7 @@
             // CloseApp
             // 
             this.CloseApp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.CloseApp.Enabled = false;
             this.CloseApp.Image = ((System.Drawing.Image)(resources.GetObject("CloseApp.Image")));
             this.CloseApp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CloseApp.Name = "CloseApp";

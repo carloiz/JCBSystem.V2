@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Data.Odbc;
+using System.Data.Odbc; 
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -293,7 +293,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                 if (underlyingType == typeof(double)) return "FLOAT";
                 if (underlyingType == typeof(float)) return "REAL";
                 if (underlyingType == typeof(Guid)) return "UNIQUEIDENTIFIER";
-                if (underlyingType == typeof(string)) return "NVARCHAR(MAX)";
+                if (underlyingType == typeof(string)) return "NVARCHAR(255)";
                 if (underlyingType == typeof(byte[])) return "VARBINARY(MAX)";
                 return "NVARCHAR(MAX)";
             }

@@ -48,12 +48,16 @@ namespace JCBSystem
             SettingsBtn.Visible = isLogin;
             mainPanel.Visible = isLogin;
 
+            // Naka Login na
             if (isLogin)
             {
                 usernameLbl.Text = userNumber;
+                CloseApp.Enabled = false;
             }
+            // hindi naka Login 
             else
             {
+                CloseApp.Enabled = true;
                 var loginForm = serviceProvider.GetRequiredService<LoginForm>();
                 loginForm.MdiParent = this; // Set parent
                 FormHelper.OpenFormWithFade(loginForm, false);
@@ -66,7 +70,7 @@ namespace JCBSystem
 
         private void CloseApp_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); 
         }
 
         private void UsersBtn_Click(object sender, EventArgs e)
@@ -83,7 +87,8 @@ namespace JCBSystem
 
         private async void logoutBtn_Click(object sender, EventArgs e)
         {
-            await loyTr.SendAsync(new ServiceLogoutCommand());  
+            await loyTr.SendAsync(new ServiceLogoutCommand());
+            Application.Exit();
         }
     }
 }

@@ -46,7 +46,6 @@ namespace JCBSystem.Infrastructure.Connection
             }
         }
 
-
         public async Task OpenConnectionAsync(IDbConnection connection)
         {
             if (connection == null)
@@ -62,7 +61,9 @@ namespace JCBSystem.Infrastructure.Connection
 
                 if (connection is DbConnection dbConn)
                 {
+                    Console.WriteLine("Before Open: " + connection.State);
                     await dbConn.OpenAsync();
+                    Console.WriteLine("After Open: " + connection.State);
                 }
                 else
                 {
@@ -73,20 +74,29 @@ namespace JCBSystem.Infrastructure.Connection
             }
             catch (SqlException sqlEx)
             {
-                Console.WriteLine($"SQL Error Number: {sqlEx.Number}");
-                Console.WriteLine($"SQL Error Message: {sqlEx.Message}");
+                Console.WriteLine();
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine("❌ SQL SERVER ERROR");
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine($"Error Number: {sqlEx.Number}");
+                Console.WriteLine($"Error Message: {sqlEx.Message}");
                 Console.WriteLine($"SQL Server: {sqlEx.Server}");
                 Console.WriteLine($"Error Source: {sqlEx.Source}");
+                Console.WriteLine("═══════════════════════════════════════════════════");
                 throw;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"General Error: {ex.Message}");
-                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                Console.WriteLine();
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine("❌ GENERAL CONNECTION ERROR");
+                Console.WriteLine("═══════════════════════════════════════════════════");
+                Console.WriteLine($"Error Type: {ex.GetType().Name}");
+                Console.WriteLine($"Error Message: {ex.Message}");
+                Console.WriteLine("═══════════════════════════════════════════════════");
                 throw;
             }
         }
-
 
         public Task<IDataAdapter> CreateDataAdapter(IDbCommand command)
         {
