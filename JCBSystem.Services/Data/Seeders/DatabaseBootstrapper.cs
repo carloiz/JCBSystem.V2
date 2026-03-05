@@ -124,13 +124,22 @@ namespace JCBSystem.Services.Data.Seeders
         private async Task ProcessTables(IDbConnection connection, IDbTransaction transaction)
         {
             // Ensure TABLES
-            await ApplySchemaUpdatesAsync(
-                connection,
-                transaction);
+            try
+            {
+                await ApplySchemaUpdatesAsync(
+            connection,
+            transaction);
 
-            transaction.Commit();
+                transaction.Commit();
 
-            Console.WriteLine("✅ Tables Successfully Update and Created.");
+                Console.WriteLine("✅ Tables Successfully Update and Created.");
+            }
+            catch (Exception)
+            {
+
+                transaction.Rollback();
+                Console.WriteLine("🔥 User Already Created.");
+            }
         }
 
         private async Task ProcessNewUser(IDbConnection connection, IDbTransaction transaction)
@@ -205,11 +214,11 @@ namespace JCBSystem.Services.Data.Seeders
                     handler,
                     new object[]
                     {
-                tableAttr.Name,
-                connection,
-                transaction,
-                null,
-                tableAttr.AutoIncrement
+                        tableAttr.Name,
+                        connection,
+                        transaction,
+                        null,
+                        tableAttr.AutoIncrement
                     });
 
                 await task;

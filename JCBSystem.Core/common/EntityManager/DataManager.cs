@@ -57,9 +57,9 @@ namespace JCBSystem.Core.common.EntityManager
         {
             return new DatabaseSchemaHandler(dbConnectionFactory, connectionFactory).HandleAsync(connection, databaseName);
         }
-        public Task CreateAlterTableAsync<T>(string tableName, IDbConnection connection, IDbTransaction transaction = null, string primaryKeyOverride = null, bool autoIncrement = true)
+        public Task CreateAlterTableAsync<T>(string tableName, IDbConnection connection, IDbTransaction transaction = null)
         {
-            return new TableSchemaHandler().HandleAsync<T>(tableName, connection, transaction, primaryKeyOverride, autoIncrement);
+            return new TableSchemaHandler().HandleAsync<T>(tableName, connection, transaction);
         }
 
 

@@ -66,9 +66,7 @@ namespace JCBSystem.Core.common.Interfaces
         Task CreateAlterTableAsync<T>(
             string tableName,
             IDbConnection connection,
-            IDbTransaction transaction = null,
-            string primaryKeyOverride = null,
-            bool autoIncrement = true);
+            IDbTransaction transaction = null);
 
 
         T GetRegistLocalSession<T>() where T : class, new();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JCBSystem.Domain.DTO.Users
 {
-    [DbTable("Members", AutoIncrement = true)]
+    [DbTable("Members")]
     public class MembersDto
     {
         [Key]
