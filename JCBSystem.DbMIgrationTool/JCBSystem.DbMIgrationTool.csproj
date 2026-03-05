@@ -112,6 +112,10 @@
       <Project>{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}</Project>
       <Name>JCBSystem.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JCBSystem.Domain\JCBSystem.Domain.csproj">
+      <Project>{c6e60b99-56be-4b8d-963c-9b99d0f6f8ad}</Project>
+      <Name>JCBSystem.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JCBSystem.Infrastructure\JCBSystem.Infrastructure.csproj">
       <Project>{0d59c432-0300-4af7-9b87-eaefa1e4e1fa}</Project>
       <Name>JCBSystem.Infrastructure</Name>

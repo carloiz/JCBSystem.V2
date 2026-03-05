@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace JCBSystem.Domain.DTO.Users
 {
+    [DbTable("Users")]
     public class UsersDto
     {
         [Key]

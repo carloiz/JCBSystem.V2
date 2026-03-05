@@ -1,4 +1,7 @@
-﻿using JCBSystem.Core.common.FormCustomization;
+﻿using JCBSystem.Core.common.Attributes;
+using JCBSystem.Core.common.EntityManager;
+using JCBSystem.Core.common.EntityManager.Handlers;
+using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Domain.DTO.Users;
@@ -6,6 +9,8 @@ using JCBSystem.Infrastructure.Connection.Interface;
 using System;
 using System.Configuration;
 using System.Data;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace JCBSystem.Services.Data.Seeders
@@ -81,7 +86,19 @@ namespace JCBSystem.Services.Data.Seeders
 
                     using (var transaction = dbConnection.BeginTransaction())
                     {
-                        await ProcessCreate(dbConnection, transaction);
+                        await ProcessTables(dbConnection, transaction);
+                    }
+                }
+
+                using (var dbConnection = dbConnectionFactory.CreateConnection())
+                {
+                    dbConnection.ConnectionString = realConnStr;
+
+                    await connectionFactory.OpenConnectionAsync(dbConnection);
+
+                    using (var transaction = dbConnection.BeginTransaction())
+                    {
+                        await ProcessNewUser(dbConnection, transaction);
                     }
                 }
 
@@ -101,6 +118,104 @@ namespace JCBSystem.Services.Data.Seeders
                 throw;
             }
         }
+
+
+
+        private async Task ProcessTables(IDbConnection connection, IDbTransaction transaction)
+        {
+            // Ensure TABLES
+            await ApplySchemaUpdatesAsync(
+                connection,
+                transaction);
+
+            transaction.Commit();
+
+            Console.WriteLine("✅ Tables Successfully Update and Created.");
+        }
+
+        private async Task ProcessNewUser(IDbConnection connection, IDbTransaction transaction)
+        {
+            try
+            {
+                string username = "admin";
+                string password = "admin";
+
+                string hashPassword = PasswordHelper.HashPassword(password);
+                DateTime dateToday = SystemDate.GetPhilippineTime();
+
+                var userCreateDto = new UsersDto
+                {
+                    UserNumber = "U000001",
+                    Username = username,
+                    Password = hashPassword,
+                    UserLevel = "Admin",
+                    Status = true,
+                    IsSessionActive = false,
+                    CurrentToken = null,
+                    RecordDate = dateToday
+                };
+
+                await dataManager.InsertAsync(userCreateDto, "Users", connection, transaction, "UserNumber");
+
+                transaction.Commit();
+
+                Console.WriteLine("✅ Default User Created.");
+            }
+            catch (Exception)
+            {
+
+                transaction.Rollback();
+                Console.WriteLine("✅ Default User Already Created.");
+            }
+        }
+
+        /// <summary>
+        /// update all tables automatically detect
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <returns></returns>
+        public async Task ApplySchemaUpdatesAsync(
+            IDbConnection connection,
+            IDbTransaction transaction)
+        {
+            var handler = new TableSchemaHandler();
+
+            // 🔥 FORCE LOAD DOMAIN ASSEMBLY
+            var domainAssembly = typeof(UsersDto).Assembly;
+
+            var tableTypes = domainAssembly
+                .GetTypes()
+                .Where(t =>
+                    t.IsClass &&
+                    !t.IsAbstract &&
+                    t.GetCustomAttribute<DbTableAttribute>() != null)
+                .ToList();
+
+            Console.WriteLine($"Detected tables: {tableTypes.Count}");
+
+            foreach (var type in tableTypes)
+            {
+                var tableAttr = type.GetCustomAttribute<DbTableAttribute>();
+
+                var method = typeof(TableSchemaHandler)
+                    .GetMethod("HandleAsync")
+                    .MakeGenericMethod(type);
+
+                var task = (Task<bool>)method.Invoke(
+                    handler,
+                    new object[]
+                    {
+                tableAttr.Name,
+                connection,
+                transaction,
+                null,
+                tableAttr.AutoIncrement
+                    });
+
+                await task;
+            }
+        }
+
 
         /// <summary>
         /// Generic method to manipulate database in connection string.
@@ -166,39 +281,6 @@ namespace JCBSystem.Services.Data.Seeders
             }
 
             return result;
-        }
-
-        private async Task ProcessCreate(IDbConnection connection, IDbTransaction transaction)
-        {
-            string username = "admin";
-            string password = "admin";
-
-            string hashPassword = PasswordHelper.HashPassword(password);
-            DateTime dateToday = SystemDate.GetPhilippineTime();
-
-            var userCreateDto = new UsersDto
-            {
-                UserNumber = "U000001",
-                Username = username,
-                Password = hashPassword,
-                UserLevel = "Admin",
-                Status = true,
-                IsSessionActive = false,
-                CurrentToken = null,
-                RecordDate = dateToday
-            };
-
-            // Ensure TABLES
-            await dataManager.CreateAlterTableAsync<UsersDto>(
-                "Users",
-                connection,
-                transaction);
-
-            await dataManager.InsertAsync(userCreateDto, "Users", connection, transaction, "UserNumber");
-
-            transaction.Commit();
-
-            Console.WriteLine("✅ Default User Created.");
         }
     }
 }

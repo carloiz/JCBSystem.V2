@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Data.Common;
 using System.Data.Odbc; 
@@ -8,11 +9,13 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using JCBSystem.Core.common.Attributes;
 
 namespace JCBSystem.Core.common.EntityManager.Handlers
 {
     public class TableSchemaHandler
     {
+
         public async Task<bool> HandleAsync<T>(
             string tableName,
             IDbConnection connection,
@@ -54,6 +57,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                 throw new Exception($"An error occurred while creating/updating table '{tableName}': {ex.Message}", ex);
             }
         }
+
 
         private async Task<bool> TableExistsAsync(
             string tableName,

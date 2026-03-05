@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\Attributes\AllowNullUpdateAttribute.cs" />
+    <Compile Include="common\Attributes\DbTableAttribute.cs" />
     <Compile Include="common\EntityManager\DataManager.cs" />
     <Compile Include="common\EntityManager\Handlers\TableSchemaHandler.cs" />
     <Compile Include="common\EntityManager\Handlers\CreateCommandHandler.cs" />

@@ -62,6 +62,7 @@ namespace JCBSystem.Core.common.EntityManager
             return new TableSchemaHandler().HandleAsync<T>(tableName, connection, transaction, primaryKeyOverride, autoIncrement);
         }
 
+
         public T GetRegistLocalSession<T>() where T : class, new()
         {
             return new RegistryKeysHandler().GetRegistLocalSession<T>();
@@ -74,5 +75,7 @@ namespace JCBSystem.Core.common.EntityManager
         {
             return new RegistryKeysHandler().DeleteRegistLocalSession<T>();
         }
+
+   
     }
 }

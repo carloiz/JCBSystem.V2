@@ -43,17 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\Auth\RegistUserDto.cs" />
+    <Compile Include="DTO\Users\MembersDto.cs" />
     <Compile Include="DTO\Users\UsersDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JCBSystem.Core\JCBSystem.Core.csproj">
-      <Project>{9D9CBBE0-6C29-4912-ACA8-B8B8ED81EBFB}</Project>
-      <Name>JCBSystem.Core</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\JCBSystem.Core\JCBSystem.Core.csproj">
+      <Project>{9d9cbbe0-6c29-4912-aca8-b8b8ed81ebfb}</Project>
+      <Name>JCBSystem.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
