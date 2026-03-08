@@ -1,7 +1,8 @@
 ﻿using JCBSystem.Core.common;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Core.common.Models;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
 using System;
@@ -47,10 +48,19 @@ namespace JCBSystem.Services.Users.UserManagement.Queries
                 { "RecordDate", "Record Date" }
             };
 
+            var queryRequest = new QueryRequestWithParams
+            {
 
-            var (result, totalRecords) = await
-                dataManager.SearchWithPaginatedAsync<UsersDto>
-                (new List<object> { }, countQuery, dataQuery, req.DataGridView, req.Image, customHeaders, SystemSettings.pageNumber, SystemSettings.pageSize);
+                CountQuery = countQuery,
+                DataQuery = dataQuery,
+                DataGrid = req.DataGridView,
+                ImageColumns = req.Image,
+                CustomColumnHeaders = customHeaders,
+                PageNumber = SystemSettings.pageNumber,
+                PageSize = SystemSettings.pageSize,
+            };
+
+            var (result, totalRecords) = await dataManager.SelectAllWithPaginatedAsync<UsersEntity>(queryRequest);
 
             SystemSettings.totalPages = (int)Math.Ceiling((double)totalRecords / SystemSettings.pageSize);
 

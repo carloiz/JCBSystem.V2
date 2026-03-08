@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JCBSystem.Core.common.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -10,27 +11,10 @@ namespace JCBSystem.Core.common.Interfaces
     public interface IDataManager
     {
         Task<(string, int)>
-          SearchWithPaginatedAsync<T>(
-              List<object> filter,
-              string countQuery,
-              string dataQuery,
-              DataGridView dataGrid,
-              List<string> imageColumns,
-              Dictionary<string, string> customColumnHeaders,
-              int pageNumber = 1,
-              int pageSize = 10
-          ) where T : new();
+          SearchWithPaginatedAsync<T>(QueryRequestWithParams queryRequest) where T : new();
 
         Task<(string, int)>
-            SelectAllWithPaginatedAsync<T>(
-                string countQuery,
-                string dataQuery,
-                DataGridView dataGrid,
-                List<string> imageColumns,
-                Dictionary<string, string> customColumnHeaders,
-                int pageNumber = 1,
-                int pageSize = 10
-            ) where T : new();
+            SelectAllWithPaginatedAsync<T>(QueryRequestBase requestBase) where T : new();
 
         Task<object> InsertAsync<T>(
            T entity,

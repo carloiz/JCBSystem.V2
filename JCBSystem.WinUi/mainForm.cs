@@ -88,7 +88,6 @@ namespace JCBSystem
         private async void logoutBtn_Click(object sender, EventArgs e)
         {
             await loyTr.SendAsync(new ServiceLogoutCommand());
-            Application.Exit();
         }
     }
 }

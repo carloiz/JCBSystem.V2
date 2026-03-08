@@ -67,6 +67,8 @@ C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.Lo
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\JCBSystem.Services.dll.config
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.ValueTuple.dll
 C:\Workspace\Workplace\JCBSystem.WinUi\JCBSystem.Services\bin\Debug\System.ValueTuple.xml
+C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\obj\Debug\JCBSystem.Services.csproj.AssemblyReference.cache
+C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\obj\Debug\JCBSystem.Services.csproj.CoreCompileInputs.cache
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\bin\Debug\JCBSystem.Services.dll.config
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\bin\Debug\JCBSystem.Services.dll
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\bin\Debug\JCBSystem.Services.pdb
@@ -132,8 +134,6 @@ C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\bin\Debug\System.Collecti
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\bin\Debug\System.Numerics.Vectors.xml
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\bin\Debug\System.ValueTuple.xml
-C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\obj\Debug\JCBSystem.Services.csproj.AssemblyReference.cache
-C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\obj\Debug\JCBSystem.Services.csproj.CoreCompileInputs.cache
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\obj\Debug\JCBSyste.0D4D0232.Up2Date
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\obj\Debug\JCBSystem.Services.dll
 C:\Workspace\Workplace\JCBSystem.V2\JCBSystem.Services\obj\Debug\JCBSystem.Services.pdb

@@ -1,7 +1,7 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
 using System.Collections.Generic;
@@ -62,7 +62,7 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
         {
             string hashPassword = PasswordHelper.HashPassword(req.Password);
 
-            var userUpdateDto = new UsersDto
+            var userUpdateDto = new UsersEntity
             {
                 UserNumber = req.KeyUsernumber,
                 Username = req.Username,

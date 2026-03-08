@@ -1,8 +1,8 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Auth;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Domain.Entities.Auth;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
 using System;
@@ -110,7 +110,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
             var tokenString = JwtTokenHelper.GetJWTToken(keyValues);
 
             /////// FOR PRIMARY KEY ONLY 1 DATA UPDATE
-            var userDto = new UsersDto
+            var userDto = new UsersEntity
             {
                 UserNumber = userNumber, // always have this for Primary Key
                 IsSessionActive = true,
@@ -127,7 +127,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
 
 
             // Write to the registry
-            var userRegistInfo = new RegistUserDto
+            var userRegistInfo = new RegistUser
             {
                 AuthToken = await DataProtectorHelper.Protect(tokenString),
                 UserNumber = await DataProtectorHelper.Protect(userNumber),
@@ -147,7 +147,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
         private async Task<(bool, string, string)> IsUserLoggedIn()
         {
 
-            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUserDto>();
+            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUser>();
 
             if (userRegistInfo != null &&
                 !string.IsNullOrEmpty(userRegistInfo.AuthToken) &&

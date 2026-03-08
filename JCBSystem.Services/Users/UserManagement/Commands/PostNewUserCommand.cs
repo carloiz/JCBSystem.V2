@@ -1,7 +1,7 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
 using System;
@@ -65,7 +65,7 @@ namespace JCBSystem.Services.Users.UserManagement.Commands
 
             DateTime dateToday = SystemDate.GetPhilippineTime();
 
-            var userCreateDto = new UsersDto
+            var userCreateDto = new UsersEntity
             {
                 UserNumber = userId,
                 Username = req.Username,

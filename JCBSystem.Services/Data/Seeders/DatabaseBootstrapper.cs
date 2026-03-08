@@ -4,7 +4,7 @@ using JCBSystem.Core.common.EntityManager.Handlers;
 using JCBSystem.Core.common.FormCustomization;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.Infrastructure.Connection.Interface;
 using System;
 using System.Configuration;
@@ -152,7 +152,7 @@ namespace JCBSystem.Services.Data.Seeders
                 string hashPassword = PasswordHelper.HashPassword(password);
                 DateTime dateToday = SystemDate.GetPhilippineTime();
 
-                var userCreateDto = new UsersDto
+                var userCreateDto = new UsersEntity
                 {
                     UserNumber = "U000001",
                     Username = username,
@@ -190,7 +190,7 @@ namespace JCBSystem.Services.Data.Seeders
             var handler = new TableSchemaHandler();
 
             // 🔥 FORCE LOAD DOMAIN ASSEMBLY
-            var domainAssembly = typeof(UsersDto).Assembly;
+            var domainAssembly = typeof(UsersEntity).Assembly;
 
             var tableTypes = domainAssembly
                 .GetTypes()

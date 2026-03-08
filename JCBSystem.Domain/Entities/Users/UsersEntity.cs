@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JCBSystem.Domain.DTO.Users
+namespace JCBSystem.Domain.Entities.Users
 {
     [DbTable("Users")]
-    public class UsersDto
+    public class UsersEntity
     {
         [Key]
         public string UserNumber { get; set; }

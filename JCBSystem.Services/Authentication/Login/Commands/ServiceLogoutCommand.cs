@@ -4,8 +4,8 @@ using System.Data;
 using System.Threading.Tasks;
 using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Auth;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Domain.Entities.Auth;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
 
@@ -38,7 +38,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
         private async Task ProcessLogout(IDbConnection connection, IDbTransaction transaction)
         {
 
-            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUserDto>();
+            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUser>();
 
             string token = userRegistInfo.AuthToken;
             string usernumber = userRegistInfo.UserNumber;
@@ -99,7 +99,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
                 throw new KeyNotFoundException("Token does not match.");
             }
 
-            var userDto = new UsersDto
+            var userDto = new UsersEntity
             {
                 UserNumber = usernumber, // always have this for Primary Key
                 IsSessionActive = false,
@@ -116,7 +116,7 @@ namespace JCBSystem.Services.Authentication.Login.Commands
 
 
             // Call the method to delete registry values
-            await dataManager.DeleteRegistLocalSession<RegistUserDto>();
+            await dataManager.DeleteRegistLocalSession<RegistUser>();
 
 
             transaction.Commit(); // Commit changes

@@ -8,6 +8,7 @@ using JCBSystem.Core.common.Interfaces;
 using JCBSystem.Infrastructure.Connection.Interface;
 using JCBSystem.Core.common.EntityManager.Handlers;
 using System.Data.Common;
+using JCBSystem.Core.common.Models;
 
 namespace JCBSystem.Core.common.EntityManager
 {
@@ -38,14 +39,14 @@ namespace JCBSystem.Core.common.EntityManager
             return new CreateCommandHandler().HandleAsync(entity, tableName, connection, transaction, primaryKeyColumn);    
         }
 
-        public Task<(string, int)> SearchWithPaginatedAsync<T>(List<object> filter, string countQuery, string dataQuery, DataGridView dataGrid, List<string> imageColumns, Dictionary<string, string> customColumnHeaders, int pageNumber = 1, int pageSize = 10) where T : new()
+        public Task<(string, int)> SearchWithPaginatedAsync<T>(QueryRequestWithParams queryRequest) where T : new()
         {
-            return new GetQueryHandler(dbConnectionFactory, connectionFactory).HandleAsync<T>(filter, countQuery, dataQuery, dataGrid, imageColumns, customColumnHeaders, pageNumber, pageSize);
+            return new GetQueryHandler(dbConnectionFactory, connectionFactory).HandleAsync<T>(queryRequest);
         }
 
-        public Task<(string, int)> SelectAllWithPaginatedAsync<T>(string countQuery, string dataQuery, DataGridView dataGrid, List<string> imageColumns, Dictionary<string, string> customColumnHeaders, int pageNumber = 1, int pageSize = 10) where T : new()
+        public Task<(string, int)> SelectAllWithPaginatedAsync<T>(QueryRequestBase queryRequest) where T : new()
         {
-            return new GetAllQueryHandler(dbConnectionFactory, connectionFactory).HandleAsync<T>(countQuery, dataQuery, dataGrid, imageColumns, customColumnHeaders, pageNumber, pageSize);
+            return new GetAllQueryHandler(dbConnectionFactory, connectionFactory).HandleAsync<T>(queryRequest);
         }
 
         public Task<int> UpdateAsync<T>(T entity, string tableName, IDbConnection connection, IDbTransaction transaction, string primaryKey = null, string whereCondition = null, List<object> additionalParameters = null)
@@ -61,8 +62,6 @@ namespace JCBSystem.Core.common.EntityManager
         {
             return new TableSchemaHandler().HandleAsync<T>(tableName, connection, transaction);
         }
-
-
         public T GetRegistLocalSession<T>() where T : class, new()
         {
             return new RegistryKeysHandler().GetRegistLocalSession<T>();
@@ -75,7 +74,5 @@ namespace JCBSystem.Core.common.EntityManager
         {
             return new RegistryKeysHandler().DeleteRegistLocalSession<T>();
         }
-
-   
     }
 }

@@ -1,5 +1,5 @@
 ﻿using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
 using JCBSystem.Services.Users.UserManagement.Commands;
@@ -31,7 +31,7 @@ namespace JCBSystem.Infrastructure.Data.Seeders
 
         private async Task ProcessCreate(IDbConnection connection, IDbTransaction transaction)
         {
-            await dataManager.CreateAlterTableAsync<UsersDto>(
+            await dataManager.CreateAlterTableAsync<UsersEntity>(
                 tableName: "Users",
                 connection: connection,
                 transaction: transaction

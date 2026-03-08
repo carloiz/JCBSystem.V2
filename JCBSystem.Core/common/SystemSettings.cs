@@ -11,7 +11,7 @@ namespace JCBSystem.Core.common
     {
         // Define pagination parameters
         public static int pageNumber = 1; // Page number to fetch
-        public static int pageSize = 10;  // Number of items per page
+        public static int pageSize = 2;  // Number of items per page
         public static int totalPages = 0;
 
         public static DateTime tokenExpiration = DateTime.UtcNow.AddDays(7);

@@ -167,6 +167,7 @@
     <Compile Include="common\Logics\Handlers\GetFieldsValues.cs" />
     <Compile Include="common\Logics\Handlers\LoadDataToTextBoxes.cs" />
     <Compile Include="common\Logics\LogicsManager.cs" />
+    <Compile Include="common\Models\QueryRequestBase.cs" />
     <Compile Include="common\SystemSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

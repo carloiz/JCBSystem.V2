@@ -1,4 +1,5 @@
 ﻿using JCBSystem.Core.common.FormCustomization;
+using JCBSystem.Core.common.Models;
 using JCBSystem.Infrastructure.Connection;
 using JCBSystem.Infrastructure.Connection.Interface;
 using Npgsql;
@@ -40,21 +41,13 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
         /// <param name="pageSize"></param>
         /// <returns></returns>
         public async Task<(string, int)>
-            HandleAsync<T>(
-                string countQuery,
-                string dataQuery,
-                DataGridView dataGrid,
-                List<string> imageColumns,
-                Dictionary<string, string> customColumnHeaders, // Bagong parameter para sa custom headers
-                int pageNumber = 1,
-                int pageSize = 10
-            )
+            HandleAsync<T>(QueryRequestBase queryRequest)
             where T : new()
         {
             var resultList = new List<T>();
 
             // Calculate offset for pagination
-            int offset = (pageNumber - 1) * pageSize;
+            int offset = (queryRequest.PageNumber - 1) * queryRequest.PageSize;
             int totalRecords = 0;
 
             using (var connection = dbConnectionFactory.CreateConnection())
@@ -65,8 +58,8 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                 bool isOdbc = connection is OdbcConnection;
                 bool isNpgSql = connection is NpgsqlConnection;
 
-                string finalCountQuery = Modules.ReplaceSharpWithParams(countQuery, isOdbc);
-                string finalDataQuery = Modules.ReplaceSharpWithParams(dataQuery, isOdbc);
+                string finalCountQuery = Modules.ReplaceSharpWithParams(queryRequest.CountQuery, isOdbc);
+                string finalDataQuery = Modules.ReplaceSharpWithParams(queryRequest.DataQuery, isOdbc);
 
                 if (isOdbc)
                     finalDataQuery += " LIMIT ? OFFSET ?";
@@ -106,7 +99,7 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
                     // Explicitly create parameters for pagination
                     var pageSizeParameter = command.CreateParameter();
                     pageSizeParameter.ParameterName = isOdbc ? "?" : "@PageSize";
-                    pageSizeParameter.Value = pageSize;
+                    pageSizeParameter.Value = queryRequest.PageSize;
                     command.Parameters.Add(pageSizeParameter);
 
                     var offsetParameter = command.CreateParameter();
@@ -173,21 +166,21 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
 
             if (resultList == null || !resultList.Any())
             {
-                dataGrid.DataSource = null;
+                queryRequest.DataGrid.DataSource = null;
                 return ($"No data found in the result.", 0);
             }
 
-            // Bind data to DataGridView
-            dataGrid.DataSource = resultList;
-            dataGrid.RowHeadersVisible = false;
-            dataGrid.EnableHeadersVisualStyles = false;
-            dataGrid.ColumnHeadersDefaultCellStyle.BackColor = SystemSettings.headerBackColor;
-            dataGrid.ColumnHeadersDefaultCellStyle.ForeColor = SystemSettings.headerForeColor;
-            dataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Regular);
-            dataGrid.ColumnHeadersDefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
+            // Bind data to requestBase.DataGridView
+            queryRequest.DataGrid.DataSource = resultList;
+            queryRequest.DataGrid.RowHeadersVisible = false;
+            queryRequest.DataGrid.EnableHeadersVisualStyles = false;
+            queryRequest.DataGrid.ColumnHeadersDefaultCellStyle.BackColor = SystemSettings.headerBackColor;
+            queryRequest.DataGrid.ColumnHeadersDefaultCellStyle.ForeColor = SystemSettings.headerForeColor;
+            queryRequest.DataGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10, FontStyle.Regular);
+            queryRequest.DataGrid.ColumnHeadersDefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
 
 
-            dataGrid.CellFormatting += (sender, e) =>
+            queryRequest.DataGrid.CellFormatting += (sender, e) =>
             {
                 // Check if the value in the cell is a DateTime
                 if (e.Value is DateTime dateValue)
@@ -199,35 +192,35 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
             };
 
             // Center-align header text
-            dataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            queryRequest.DataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             // Center-align cell content for each column
-            foreach (DataGridViewColumn column in dataGrid.Columns)
+            foreach (DataGridViewColumn column in queryRequest.DataGrid.Columns)
             {
                 column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
             // Set AutoSizeColumnsMode to Fill to evenly distribute the column width
-            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            queryRequest.DataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Apply custom column headers
-            if (customColumnHeaders != null)
+            if (queryRequest.CustomColumnHeaders != null)
             {
-                foreach (var key in customColumnHeaders.Keys)
+                foreach (var key in queryRequest.CustomColumnHeaders.Keys)
                 {
-                    if (dataGrid.Columns.Contains(key))
+                    if (queryRequest.DataGrid.Columns.Contains(key))
                     {
-                        var column = dataGrid.Columns[key];
-                        column.HeaderText = customColumnHeaders[key];
+                        var column = queryRequest.DataGrid.Columns[key];
+                        column.HeaderText = queryRequest.CustomColumnHeaders[key];
                         column.Visible = true;
-                        column.DisplayIndex = customColumnHeaders.Keys.ToList().IndexOf(key);
+                        column.DisplayIndex = queryRequest.CustomColumnHeaders.Keys.ToList().IndexOf(key);
                     }
                 }
 
                 // Hide all other columns
-                foreach (DataGridViewColumn column in dataGrid.Columns)
+                foreach (DataGridViewColumn column in queryRequest.DataGrid.Columns)
                 {
-                    if (!customColumnHeaders.ContainsKey(column.Name))
+                    if (!queryRequest.CustomColumnHeaders.ContainsKey(column.Name))
                     {
                         column.Visible = false;
                     }
@@ -236,23 +229,23 @@ namespace JCBSystem.Core.common.EntityManager.Handlers
 
 
             // Exclude image columns from AutoSizeColumnsMode.Fill
-            if (imageColumns != null && imageColumns.Count > 0)
+            if (queryRequest.ImageColumns != null && queryRequest.ImageColumns.Count > 0)
             {
-                foreach (string imageColumnName in imageColumns)
+                foreach (string imageColumnName in queryRequest.ImageColumns)
                 {
-                    if (dataGrid.Columns.Contains(imageColumnName))
+                    if (queryRequest.DataGrid.Columns.Contains(imageColumnName))
                     {
                         // Set a fixed width for the image columns
-                        dataGrid.Columns[imageColumnName].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                        dataGrid.Columns[imageColumnName].Width = 35; // Set your desired fixed width for image columns
-                        dataGrid.Columns[imageColumnName].DisplayIndex = dataGrid.Columns.Count - 1; // Optional: move to the last position
+                        queryRequest.DataGrid.Columns[imageColumnName].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                        queryRequest.DataGrid.Columns[imageColumnName].Width = 35; // Set your desired fixed width for image columns
+                        queryRequest.DataGrid.Columns[imageColumnName].DisplayIndex = queryRequest.DataGrid.Columns.Count - 1; // Optional: move to the last position
                     }
                 }
             }
 
             // **NEW: Enable multiline support and row auto-sizing**
-            dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            foreach (DataGridViewColumn column in dataGrid.Columns)
+            queryRequest.DataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            foreach (DataGridViewColumn column in queryRequest.DataGrid.Columns)
             {
                 column.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             }

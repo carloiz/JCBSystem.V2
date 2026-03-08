@@ -1,7 +1,7 @@
 ﻿using JCBSystem.Core.common.Helpers;
 using JCBSystem.Core.common.Interfaces;
-using JCBSystem.Domain.DTO.Auth;
-using JCBSystem.Domain.DTO.Users;
+using JCBSystem.Domain.Entities.Auth;
+using JCBSystem.Domain.Entities.Users;
 using JCBSystem.LoyTr.Handlers;
 using JCBSystem.LoyTr.Interfaces;
 using System;
@@ -37,7 +37,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
 
         private async Task ProcessSession(IDbConnection connection, IDbTransaction transaction)
         {
-            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUserDto>();
+            var userRegistInfo = dataManager.GetRegistLocalSession<RegistUser>();
 
             string token = userRegistInfo.AuthToken;
             string usernumber = userRegistInfo.UserNumber;
@@ -67,7 +67,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
                     throw new KeyNotFoundException("User not found in Session.");
                 }
 
-                var userDto = new UsersDto
+                var userDto = new UsersEntity
                 {
                     UserNumber = usernumber, // always have this for Primary Key
                     IsSessionActive = false,
@@ -82,7 +82,7 @@ namespace JCBSystem.Services.MainDashboard.Queries
                     primaryKey: "UserNumber"
                 );
 
-                await dataManager.DeleteRegistLocalSession<RegistUserDto>();
+                await dataManager.DeleteRegistLocalSession<RegistUser>();
 
                 sessionManager.OnUserLog();
 

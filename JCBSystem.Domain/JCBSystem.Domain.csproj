@@ -42,9 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\Auth\RegistUserDto.cs" />
-    <Compile Include="DTO\Users\MembersDto.cs" />
-    <Compile Include="DTO\Users\UsersDto.cs" />
+    <Compile Include="Entities\Auth\RegistUser.cs" />
+    <Compile Include="Entities\Users\Members.cs" />
+    <Compile Include="Entities\Users\UsersEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,5 +56,6 @@
       <Name>JCBSystem.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
